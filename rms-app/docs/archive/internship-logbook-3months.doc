@@ -1,0 +1,487 @@
+3-MONTH INTERNSHIP LOG BOOK (FULL VERSION)
+
+Internship Period: 23-02-2026 to 14-05-2026
+Working Days: Sunday-Thursday (Friday and Saturday Off)
+Project: RMS (Laravel + Bootstrap + MySQL)
+
+Student Name: ____________________________
+Student ID: ____________________________
+Company Name: ____________________________
+Department: ____________________________
+
+------------------------------------------------------------
+Week 1 (23 Feb - 26 Feb 2026)
+
+Monday (23 Feb)
+Activities:
+- Had a formal meeting with supervisor regarding project selection
+- Introduced myself to development team
+- Discussed scope of Restaurant Management System (RMS)
+Skills:
+- Professional Ethics
+- Communication Skills
+
+Tuesday (24 Feb)
+Activities:
+- Brainstormed core features of RMS
+- Analyzed competitor restaurant systems
+- Created initial development roadmap
+Skills:
+- Requirement Analysis
+- Analytical Thinking
+
+Wednesday (25 Feb)
+Activities:
+- Identified functional requirements for Admin and Vendor roles
+- Defined modules (Menu, Orders, Billing)
+- Selected technology stack
+Skills:
+- System Analysis
+- Logic Building
+
+Thursday (26 Feb)
+Activities:
+- Installed XAMPP and Laravel framework
+- Configured project in VS Code
+- Tested Apache and MySQL server
+Skills:
+- Environment Setup
+- Tool Management
+
+------------------------------------------------------------
+Week 2 (1 Mar - 5 Mar)
+
+Sunday (1 Mar)
+Activities:
+- Configured database in Laravel .env file
+- Created initial migrations
+- Connected MySQL database successfully
+Skills:
+- DB Connectivity
+- Migration System
+
+Monday (2 Mar)
+Activities:
+- Designed landing page UI using Bootstrap
+- Created navbar and hero section
+- Made UI responsive
+Skills:
+- UI Design
+- Bootstrap Grid
+
+Tuesday (3 Mar)
+Activities:
+- Developed login and registration system
+- Stored user data in database
+- Validated authentication logic
+Skills:
+- Authentication
+- Form Handling
+
+Wednesday (4 Mar)
+Activities:
+- Created role-based middleware
+- Restricted admin routes
+- Tested unauthorized access handling
+Skills:
+- Security Logic
+- Access Control
+
+Thursday (5 Mar)
+Activities:
+- Developed Admin Dashboard UI
+- Displayed statistics cards
+- Designed sidebar navigation
+Skills:
+- Dashboard Design
+- Component Structuring
+
+------------------------------------------------------------
+Week 3 (8 Mar - 12 Mar)
+
+Sunday (8 Mar)
+Activities:
+- Developed Food Category CRUD module
+- Created add/edit/delete functions
+- Tested category listing
+Skills:
+- CRUD Operations
+- Data Handling
+
+Monday (9 Mar)
+Activities:
+- Developed Food management system
+- Implemented image upload feature
+- Stored images in local storage
+Skills:
+- File Upload
+- Media Management
+
+Tuesday (10 Mar)
+Activities:
+- Created relationship between Category and Food models
+- Used Eloquent ORM
+- Retrieved relational data
+Skills:
+- ORM (Eloquent)
+- Database Relationships
+
+Wednesday (11 Mar)
+Activities:
+- Built search filter for menu
+- Added category filter
+- Optimized query performance
+Skills:
+- Query Optimization
+- Filtering Logic
+
+Thursday (12 Mar)
+Activities:
+- Developed Add-to-Cart system using sessions
+- Created cart page
+- Implemented quantity update
+Skills:
+- Session Management
+- Cart System Logic
+
+------------------------------------------------------------
+Week 4 (15 Mar - 19 Mar)
+
+Sunday (15 Mar)
+Activities:
+- Designed checkout page
+- Calculated total with VAT
+- Implemented order placement
+Skills:
+- Business Logic
+- Financial Calculation
+
+Monday (16 Mar)
+Activities:
+- Developed vendor dashboard
+- Displayed live orders
+- Added order notifications
+Skills:
+- Real-time Dashboard
+- Notification System
+
+Tuesday (17 Mar)
+Activities:
+- Implemented order status flow
+- Managed Pending to Delivered states
+- Updated customer view
+Skills:
+- Workflow Management
+- State Handling
+
+Wednesday (18 Mar)
+Activities:
+- Created invoice system using Blade
+- Displayed dynamic order data
+- Added print functionality
+Skills:
+- Dynamic Rendering
+- Document Generation
+
+Thursday (19 Mar)
+Activities:
+- Performed full system testing
+- Fixed cart clearing bug
+- Verified transaction ID generation
+Skills:
+- Debugging
+- System Testing
+
+------------------------------------------------------------
+Week 5 (22 Mar - 26 Mar)
+
+Sunday (22 Mar)
+Activities:
+- Researched SSLCommerz API
+- Studied Stripe documentation
+- Configured sandbox environment
+Skills:
+- API Research
+- Payment Integration
+
+Monday (23 Mar)
+Activities:
+- Developed payment controller
+- Created success/fail routes
+- Tested sandbox payments
+Skills:
+- API Integration
+- Request Handling
+
+Tuesday (24 Mar)
+Activities:
+- Implemented IPN system
+- Verified payment validation
+- Logged transactions
+Skills:
+- Security Validation
+- Webhooks
+
+Wednesday (25 Mar)
+Activities:
+- Developed refund system
+- Processed canceled orders
+- Updated inventory after refund
+Skills:
+- Refund Logic
+- Inventory Sync
+
+Thursday (26 Mar)
+Activities:
+- Tested payment gateway
+- Fixed timeout issues
+- Improved checkout speed
+Skills:
+- Performance Optimization
+- Error Handling
+
+------------------------------------------------------------
+Week 6 (29 Mar - 2 Apr)
+
+Sunday (29 Mar)
+Activities:
+- Developed sales report module
+- Created revenue tables
+- Displayed daily sales
+Skills:
+- Data Visualization
+- Reporting
+
+Monday (30 Mar)
+Activities:
+- Wrote advanced SQL queries
+- Calculated profit margins
+- Verified data accuracy
+Skills:
+- SQL Optimization
+- Business Logic
+
+Tuesday (31 Mar)
+Activities:
+- Developed reservation system
+- Implemented table booking
+- Prevented duplicate bookings
+Skills:
+- Reservation Logic
+- Constraint Handling
+
+Wednesday (1 Apr)
+Activities:
+- Configured email notifications
+- Sent booking confirmations
+- Tested SMTP setup
+Skills:
+- Email Integration
+- SMTP Configuration
+
+Thursday (2 Apr)
+Activities:
+- Refactored project code
+- Removed unused routes
+- Improved query performance
+Skills:
+- Code Optimization
+- Refactoring
+
+------------------------------------------------------------
+Week 7 (5 Apr - 9 Apr)
+
+Sunday (5 Apr)
+Activities:
+- Developed coupon system
+- Created discount logic
+- Added admin coupon generator
+Skills:
+- Discount System
+- Backend Logic
+
+Monday (6 Apr)
+Activities:
+- Tested coupon expiry
+- Fixed discount calculation bug
+- Validated coupon limits
+Skills:
+- Validation Logic
+- Boundary Testing
+
+Tuesday (7 Apr)
+Activities:
+- Developed staff management system
+- Assigned roles and permissions
+- Restricted access controls
+Skills:
+- Role Management
+- Authorization
+
+Wednesday (8 Apr)
+Activities:
+- Implemented password hashing
+- Developed password reset system
+- Secured authentication
+Skills:
+- Cryptography
+- Security Implementation
+
+Thursday (9 Apr)
+Activities:
+- Performed security audit
+- Checked SQL injection issues
+- Verified middleware protection
+Skills:
+- Security Testing
+- Risk Analysis
+
+------------------------------------------------------------
+Week 8 (12 Apr - 16 Apr)
+
+Sunday (12 Apr)
+Activities:
+- Started User Acceptance Testing
+- Fixed mobile UI issues
+- Improved responsiveness
+Skills:
+- UAT Testing
+- UI Optimization
+
+Monday (13 Apr)
+Activities:
+- Developed Excel export feature
+- Used Laravel export package
+- Tested spreadsheet output
+Skills:
+- Data Export
+- Package Integration
+
+Tuesday (14 Apr)
+Activities:
+- Implemented AJAX notifications
+- Added real-time updates
+- Improved dashboard speed
+Skills:
+- AJAX
+- Real-time Updates
+
+Wednesday (15 Apr)
+Activities:
+- Built customer dashboard
+- Added reorder feature
+- Improved profile system
+Skills:
+- UX Improvement
+- Feature Enhancement
+
+Thursday (16 Apr)
+Activities:
+- Conducted stress testing
+- Simulated 100+ users
+- Fixed deadlock issue
+Skills:
+- Scalability Testing
+- Performance Debugging
+
+------------------------------------------------------------
+Week 9 (19 Apr - 23 Apr)
+
+Sunday (19 Apr)
+Activities:
+- Seeded database with real data
+- Optimized queries
+- Cleaned project assets
+Skills:
+- Optimization
+- Data Management
+
+Monday (20 Apr)
+Activities:
+- Updated UML diagrams
+- Created sequence diagrams
+- Finalized architecture
+Skills:
+- System Design
+- UML Modeling
+
+Tuesday (21 Apr)
+Activities:
+- Wrote final internship report
+- Summarized project modules
+- Prepared documentation
+Skills:
+- Technical Writing
+- Reporting
+
+Wednesday (22 Apr)
+Activities:
+- Created project backup
+- Exported database
+- Verified files
+Skills:
+- Backup Management
+- Data Safety
+
+Thursday (23 Apr)
+Activities:
+- Delivered final project demo
+- Explained system architecture
+- Answered technical questions
+Skills:
+- Presentation Skills
+- Technical Defense
+
+------------------------------------------------------------
+Week 10 (26 Apr - 30 Apr)
+
+Activities:
+- Bug fixes after demo
+- UI improvements
+- Performance tuning
+- Code cleanup
+- Supervisor feedback
+
+------------------------------------------------------------
+Week 11 (3 May - 7 May)
+
+Activities:
+- Final testing
+- Documentation update
+- Deployment preparation
+- User guide creation
+- Review meeting
+
+------------------------------------------------------------
+Week 12 (10 May - 14 May)
+
+Activities:
+- Final adjustments
+- Project handover
+- Knowledge transfer
+- Final presentation
+- Internship completion
+
+------------------------------------------------------------
+FINAL NOTE
+
+This is a complete 12-week, full internship logbook aligned with dates and working days, ready for:
+- Submission
+- Printing
+- University approval
+
+------------------------------------------------------------
+Weekly Supervisor Signature
+
+Week 1 Signature: ____________________________
+Week 2 Signature: ____________________________
+Week 3 Signature: ____________________________
+Week 4 Signature: ____________________________
+Week 5 Signature: ____________________________
+Week 6 Signature: ____________________________
+Week 7 Signature: ____________________________
+Week 8 Signature: ____________________________
+Week 9 Signature: ____________________________
+Week 10 Signature: ____________________________
+Week 11 Signature: ____________________________
+Week 12 Signature: ____________________________

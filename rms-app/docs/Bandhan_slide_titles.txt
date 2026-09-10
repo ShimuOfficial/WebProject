@@ -1,0 +1,53 @@
+1. PRACTICUM DEFENSE
+2. TOPICS
+3. ORGANIZATION
+4. PROJECT OVERVIEW
+5. PROCESS MODEL
+6. PROCESS MODEL CONT...
+7. REQUIREMENT ENGINEERING
+8. REQUIREMENT ENGINEERING
+9. REQUIREMENT ENGINEERING CONT ...
+10. Centralized Operations - Admin manages all restaurant operations from single interface
+11. REQUIREMENT ENGINEERING CONT ...
+12. REQUIREMENT ENGINEERING CONT ...
+13. USE CASE DIAGRAM
+14. Function Point Estimation for POS System
+15. FUNCTION POINT ESTIMATION
+16. IDENTIFY COMPLEXITY
+17. IDENTIFY COMPLEXITY
+18. Unadjusted Function Point Contribution
+19. Table  shows how much each transaction function adds to the total function points.
+20. UFP OF DF
+21. Project Scheduling
+22. Project Scheduling
+23. PROJECT PHASES AND TIMELINE
+24. KEY  PROJECT  MILESTONES
+25. THE RMMM PLAN FOR RESTAURANT POS SYSTEMS
+26. UNDERSTANDING RMMM FRAMEWORK
+27. RISK MITIGATION: PREVENTION FIRST
+28. INVENTORY TRACKING ACCURACY
+29. Risk Management: When Prevention Fails
+30. EMERGENCY RESPONSE IMPLEMENTATION
+31. BUILDING RESILIENT POS SYSTEMS
+32. ANALYSIS MODELLING
+33. Activity Diagram for admin
+34. SWIM LANE DIAGRAMS
+35. Swim-lane Diagram for Authentication & Login Process
+36. SWIM-LANE DIAGRAM FOR ORDER PROCESSING
+37. Swim-lane Diagram for Report & Analytics
+38. Class Diagram
+39. Class Diagram for Restaurant POS System
+40. ERD Diagram
+41. Database Design
+42. Data Flow Diagram
+43. Level 1 (DFD) :
+44. Level 2 DFD Process 1
+45. Level 2 DFD Process 3
+46. Level 2 DFD Process 5
+47. 47
+48. LIMITATIONS
+49. Future Work
+50. Performance and Scalability Enhancement:
+51. CONCLUSION
+52. Technical Achievement:
+53. THANK YOU SO MUCH!

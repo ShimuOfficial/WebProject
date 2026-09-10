@@ -1,0 +1,130 @@
+<mxfile host="65bd71144e">
+    <diagram id="rms-dfd-level-0" name="RMS DFD Level 0">
+        <mxGraphModel dx="837" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="YKJ2ggJE0fgS_Y-wkp57-8" value="" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="240" width="1690" height="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="customer" value="CUSTOMER" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fillColor=#ffffff;strokeColor=#6f5d52;fontColor=#1f1712;fontSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="470" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="chef" value="CHEF / KITCHEN STAFF" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fillColor=#ffffff;strokeColor=#6f5d52;fontColor=#1f1712;fontSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="890" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="admin" value="MANAGER / ADMIN" style="shape=rectangle;rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fillColor=#ffffff;strokeColor=#6f5d52;fontColor=#1f1712;fontSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="1450" y="520" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="f_customer_order" value="order details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2f7d67;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=0.063;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1" target="YKJ2ggJE0fgS_Y-wkp57-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="800" y="730" as="targetPoint"/>
+                        <mxPoint x="330" y="550" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="330" y="540"/>
+                            <mxPoint x="320" y="540"/>
+                            <mxPoint x="320" y="600"/>
+                            <mxPoint x="795" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="Txt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="f_customer_order">
+                    <mxGeometry x="-0.9826" y="4" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_customer_response" value="menu, order status, receipt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2f7d67;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;" parent="1" target="customer" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="780" y="430"/>
+                            <mxPoint x="780" y="480"/>
+                        </Array>
+                        <mxPoint x="770" y="430" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_customer_login" value="login request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=-0.004;entryY=0.403;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="customer" edge="1" target="YKJ2ggJE0fgS_Y-wkp57-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="295" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="779" y="505"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_customer_auth_result" value="auth result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;exitX=0;exitY=0.45;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.818;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="customer" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="780" y="440"/>
+                            <mxPoint x="320" y="440"/>
+                        </Array>
+                        <mxPoint x="780" y="501.79999999999995" as="sourcePoint"/>
+                        <mxPoint x="320" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_chef_login" value="login request" style="rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=0.154;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.15;exitY=0.029;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="chef" edge="1" target="YKJ2ggJE0fgS_Y-wkp57-5">
+                    <mxGeometry x="-0.6481" y="-25" relative="1" as="geometry">
+                        <mxPoint x="620" y="925" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_chef_auth_result" value="auth result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;exitX=0;exitY=0.62;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="YKJ2ggJE0fgS_Y-wkp57-5" target="chef" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="680" y="533"/>
+                            <mxPoint x="680" y="950"/>
+                        </Array>
+                        <mxPoint x="740" y="925" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_admin_login" value="login request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=1.008;entryY=0.806;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="admin" edge="1" target="YKJ2ggJE0fgS_Y-wkp57-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1110" y="555" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_admin_auth_result" value="auth result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1020" y="580"/>
+                        </Array>
+                        <mxPoint x="1020" y="543" as="sourcePoint"/>
+                        <mxPoint x="1450" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_kitchen_ticket" value="kitchen order ticket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2f7d67;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;exitX=-0.024;exitY=0.638;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="854.2400000000002" y="580.0020000000001" as="sourcePoint"/>
+                        <mxPoint x="980" y="890" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_kitchen_update" value="preparing / ready status" style="rounded=0;html=1;strokeColor=#2f7d67;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=0.5;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="chef" target="YKJ2ggJE0fgS_Y-wkp57-5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="740" y="640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_admin_request" value="management and report requests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;entryX=1.008;entryY=0.032;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1020.0000000000001" y="457.48800000000006" as="targetPoint"/>
+                        <mxPoint x="1550" y="520" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1550" y="458"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="f_admin_response" value="dashboard, reports, alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#b54827;strokeWidth=2;endArrow=block;endFill=1;fontSize=20;fontColor=#1f1712;labelBackgroundColor=#ffffff;exitX=0.917;exitY=1.041;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="YKJ2ggJE0fgS_Y-wkp57-5" target="admin" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1000" y="620"/>
+                            <mxPoint x="1550" y="620"/>
+                        </Array>
+                        <mxPoint x="1060" y="620.0000000000002" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YKJ2ggJE0fgS_Y-wkp57-3" value="0" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="430" width="240" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="YKJ2ggJE0fgS_Y-wkp57-5" value="&lt;br&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;RESTAURANT MANAGEMENT SYSTEM&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=20;" parent="YKJ2ggJE0fgS_Y-wkp57-3" vertex="1">
+                    <mxGeometry y="26" width="240" height="124" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

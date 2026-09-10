@@ -1,0 +1,12 @@
+/**
+ * API V1 Tests - REMOVED
+ * 
+ * This file has been removed on May 14, 2026 as part of system simplification.
+ * The API v1 endpoints have been completely removed from the application.
+ * 
+ * The application now uses web-only access with session-based authentication.
+ * See other test files in tests/Feature/ for web route testing.
+ * 
+ * Original file: tests/Feature/ApiV1Test.php (244 lines)
+ * Reason: API endpoints no longer needed - web-only system
+ */

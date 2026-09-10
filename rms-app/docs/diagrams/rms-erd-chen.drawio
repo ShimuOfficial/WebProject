@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="GitHubCopilot">
+  <diagram id="rms-erd-chen" name="RMS ERD (Chen Notation)">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Entities -->
+        <mxCell id="e_user" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="User" vertex="1">
+          <mxGeometry x="200" y="160" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_table" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Table" vertex="1">
+          <mxGeometry x="200" y="700" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_order" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Order" vertex="1">
+          <mxGeometry x="900" y="430" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_payment" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="PaymentTransaction" vertex="1">
+          <mxGeometry x="1550" y="160" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_menu" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Menu" vertex="1">
+          <mxGeometry x="1550" y="700" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inventory" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" value="Inventory" vertex="1">
+          <mxGeometry x="2100" y="700" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships (diamonds) -->
+        <mxCell id="r_creates" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="creates" vertex="1">
+          <mxGeometry x="540" y="240" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r_assigned" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="assigned_to" vertex="1">
+          <mxGeometry x="540" y="640" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r_has_payment" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="has" vertex="1">
+          <mxGeometry x="1230" y="240" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_order_items" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="order_items" vertex="1">
+          <mxGeometry x="1230" y="640" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r_menu_ing" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="menu_ingredients" vertex="1">
+          <mxGeometry x="1850" y="720" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Relationship connectors + cardinalities (matching your sample: labels are child vertices on edges) -->
+        <!-- User creates Order (1:N) -->
+        <mxCell id="c_user_creates" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="e_user" target="r_creates"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_user_1" parent="c_user_creates" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;" value="1" vertex="1"><mxGeometry relative="1" x="-1" as="geometry" /></mxCell>
+        <mxCell id="c_order_creates" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="r_creates" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_order_n1" parent="c_order_creates" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="1" as="geometry" /></mxCell>
+
+        <!-- Table assigned_to Order (1:N) -->
+        <mxCell id="c_table_assigned" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="e_table" target="r_assigned"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_table_1" parent="c_table_assigned" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;" value="1" vertex="1"><mxGeometry relative="1" x="-1" as="geometry" /></mxCell>
+        <mxCell id="c_order_assigned" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="r_assigned" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_order_n2" parent="c_order_assigned" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="1" as="geometry" /></mxCell>
+
+        <!-- Order has PaymentTransaction (1:N) -->
+        <mxCell id="c_order_has" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="e_order" target="r_has_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_order_1" parent="c_order_has" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;" value="1" vertex="1"><mxGeometry relative="1" x="-1" as="geometry" /></mxCell>
+        <mxCell id="c_payment_has" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="r_has_payment" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_payment_n" parent="c_payment_has" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="1" as="geometry" /></mxCell>
+
+        <!-- Order order_items Menu (M:N) -->
+        <mxCell id="c_order_items_order" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="e_order" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_order_n3" parent="c_order_items_order" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="-1" as="geometry" /></mxCell>
+        <mxCell id="c_order_items_menu" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="r_order_items" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_menu_n1" parent="c_order_items_menu" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="1" as="geometry" /></mxCell>
+
+        <!-- Menu menu_ingredients Inventory (M:N) -->
+        <mxCell id="c_menu_ing_menu" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="e_menu" target="r_menu_ing"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_menu_n2" parent="c_menu_ing_menu" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="-1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_ing_inv" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="r_menu_ing" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="lbl_inv_n" parent="c_menu_ing_inv" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1"><mxGeometry relative="1" x="1" as="geometry" /></mxCell>
+
+        <!-- Attribute styles (reusing your sample conventions) -->
+        <!-- PK: dotted underline span. FK: italic (fontStyle=4). Derived: dashed ellipse. -->
+
+        <!-- User attributes -->
+        <mxCell id="a_user_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="40" y="80" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="name" vertex="1"><mxGeometry x="40" y="140" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_email" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="email" vertex="1"><mxGeometry x="40" y="200" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_role" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="role" vertex="1"><mxGeometry x="40" y="260" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_phone" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="phone" vertex="1"><mxGeometry x="40" y="320" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_active" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="is_active" vertex="1"><mxGeometry x="40" y="380" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_verified" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="email_verified_at" vertex="1"><mxGeometry x="380" y="80" width="170" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_password" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="password" vertex="1"><mxGeometry x="380" y="140" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_remember" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="remember_token" vertex="1"><mxGeometry x="380" y="200" width="160" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="380" y="260" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_user_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="380" y="320" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Table attributes -->
+        <mxCell id="a_table_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="40" y="620" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_no" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="table_number" vertex="1"><mxGeometry x="40" y="680" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_capacity" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="capacity" vertex="1"><mxGeometry x="40" y="740" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="status" vertex="1"><mxGeometry x="40" y="800" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_location" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="location" vertex="1"><mxGeometry x="40" y="860" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="380" y="660" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_table_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="380" y="720" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Order attributes (including FK attributes as italic like your sample) -->
+        <mxCell id="a_order_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="760" y="310" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_number" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="order_number" vertex="1"><mxGeometry x="900" y="310" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_table_fk" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" value="table_id (FK)" vertex="1"><mxGeometry x="1060" y="310" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_user_fk" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" value="user_id (FK)" vertex="1"><mxGeometry x="1220" y="310" width="150" height="40" as="geometry" /></mxCell>
+
+        <mxCell id="a_order_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="status" vertex="1"><mxGeometry x="760" y="490" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_notes" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="notes" vertex="1"><mxGeometry x="760" y="550" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_source" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="order_source" vertex="1"><mxGeometry x="760" y="610" width="140" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_approved" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="is_customer_approved" vertex="1"><mxGeometry x="760" y="670" width="190" height="40" as="geometry" /></mxCell>
+
+        <mxCell id="a_order_total" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;dashed=1;dashPattern=1 2;" value="total_amount" vertex="1"><mxGeometry x="980" y="490" width="140" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_payment_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="payment_status" vertex="1"><mxGeometry x="980" y="550" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_payment_method" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="payment_method" vertex="1"><mxGeometry x="980" y="610" width="160" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_payment_ref" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="payment_reference" vertex="1"><mxGeometry x="980" y="670" width="180" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_paid_amount" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="paid_amount" vertex="1"><mxGeometry x="1180" y="490" width="140" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_paid_at" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="paid_at" vertex="1"><mxGeometry x="1180" y="550" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_inv_deducted" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="inventory_deducted_at" vertex="1"><mxGeometry x="1180" y="610" width="200" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="1220" y="490" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_order_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="1220" y="550" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- PaymentTransaction attributes -->
+        <mxCell id="a_pay_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="1820" y="60" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_order_fk" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" value="order_id (FK)" vertex="1"><mxGeometry x="1820" y="120" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_gateway" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="gateway" vertex="1"><mxGeometry x="1820" y="180" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_trx" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="transaction_id" vertex="1"><mxGeometry x="1820" y="240" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_amount" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="amount" vertex="1"><mxGeometry x="1820" y="300" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="status" vertex="1"><mxGeometry x="1980" y="120" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_method" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="payment_method" vertex="1"><mxGeometry x="1980" y="180" width="160" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_response" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="gateway_response" vertex="1"><mxGeometry x="1980" y="240" width="170" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_paid_at" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="paid_at" vertex="1"><mxGeometry x="1980" y="300" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="2140" y="180" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_pay_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="2140" y="240" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Menu attributes -->
+        <mxCell id="a_menu_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="1460" y="840" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="name" vertex="1"><mxGeometry x="1460" y="900" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_category" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="category" vertex="1"><mxGeometry x="1460" y="960" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_desc" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="description" vertex="1"><mxGeometry x="1600" y="840" width="140" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_price" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="price" vertex="1"><mxGeometry x="1600" y="900" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_image" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="image" vertex="1"><mxGeometry x="1600" y="960" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_avail" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="is_available" vertex="1"><mxGeometry x="1740" y="840" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="1740" y="900" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_menu_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="1740" y="960" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Inventory attributes -->
+        <mxCell id="a_inv_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;id&lt;/span&gt;" vertex="1"><mxGeometry x="2060" y="840" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_item" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="item_name" vertex="1"><mxGeometry x="2060" y="900" width="140" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_category" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="category" vertex="1"><mxGeometry x="2060" y="960" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_qty" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="quantity" vertex="1"><mxGeometry x="2210" y="840" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_unit" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="unit" vertex="1"><mxGeometry x="2210" y="900" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_min" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="min_quantity" vertex="1"><mxGeometry x="2210" y="960" width="150" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_cost" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="cost_per_unit" vertex="1"><mxGeometry x="2370" y="840" width="160" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_supplier" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="supplier" vertex="1"><mxGeometry x="2370" y="900" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_notes" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="notes" vertex="1"><mxGeometry x="2370" y="960" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="2530" y="840" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_inv_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="2530" y="900" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Relationship attributes: order_items -->
+        <mxCell id="a_oi_qty" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="quantity" vertex="1"><mxGeometry x="1120" y="780" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_oi_unit_price" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="unit_price" vertex="1"><mxGeometry x="1120" y="840" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_oi_subtotal" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;dashed=1;dashPattern=1 2;" value="subtotal" vertex="1"><mxGeometry x="1120" y="900" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_oi_notes" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="notes" vertex="1"><mxGeometry x="1270" y="780" width="120" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_oi_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="1270" y="840" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_oi_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="1270" y="900" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Relationship attributes: menu_ingredients -->
+        <mxCell id="a_mi_qty" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="quantity_per_dish" vertex="1"><mxGeometry x="1810" y="840" width="170" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_mi_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="created_at" vertex="1"><mxGeometry x="1810" y="900" width="130" height="40" as="geometry" /></mxCell>
+        <mxCell id="a_mi_updated" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="updated_at" vertex="1"><mxGeometry x="1950" y="900" width="130" height="40" as="geometry" /></mxCell>
+
+        <!-- Attribute connectors (lines) -->
+        <mxCell id="c_user_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_id" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_name" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_name" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_email" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_email" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_role" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_role" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_phone" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_phone" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_active" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_active" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_verified" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_verified" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_password" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_password" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_remember" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_remember" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_created" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_user_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_user_updated" target="e_user"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_table_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_id" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_no" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_no" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_capacity" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_capacity" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_status" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_status" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_location" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_location" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_created" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_table_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_table_updated" target="e_table"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_order_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_id" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_number" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_number" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_table_fk" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_table_fk" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_user_fk" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_user_fk" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_status" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_status" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_notes" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_notes" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_source" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_source" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_approved" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_approved" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_total" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_total" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_payment_status" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_payment_status" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_payment_method" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_payment_method" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_payment_ref" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_payment_ref" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_paid_amount" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_paid_amount" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_paid_at" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_paid_at" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_inv_deducted" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_inv_deducted" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_created" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_order_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_order_updated" target="e_order"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_pay_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_id" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_order_fk" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_order_fk" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_gateway" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_gateway" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_trx" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_trx" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_amount" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_amount" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_status" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_status" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_method" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_method" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_response" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_response" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_paid_at" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_paid_at" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_created" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_pay_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_pay_updated" target="e_payment"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_menu_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_id" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_name" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_name" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_category" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_category" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_desc" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_desc" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_price" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_price" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_image" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_image" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_avail" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_avail" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_created" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_menu_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_menu_updated" target="e_menu"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_inv_id" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_id" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_item" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_item" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_category" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_category" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_qty" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_qty" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_unit" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_unit" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_min" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_min" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_cost" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_cost" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_supplier" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_supplier" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_notes" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_notes" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_created" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_inv_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_inv_updated" target="e_inventory"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_oi_qty" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_qty" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_oi_unit_price" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_unit_price" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_oi_subtotal" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_subtotal" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_oi_notes" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_notes" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_oi_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_created" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_oi_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_oi_updated" target="r_order_items"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_mi_qty" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_mi_qty" target="r_menu_ing"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_mi_created" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_mi_created" target="r_menu_ing"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_mi_updated" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="a_mi_updated" target="r_menu_ing"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

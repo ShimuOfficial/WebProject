@@ -1,0 +1,782 @@
+Full slide text extract for: /Users/jerin/Desktop/project/rms-app/docs/Bandhan_21303158.pptx
+
+SLIDE 1
+Title: [No Title]
+Text content:
+- Practicum defense presentation
+- May 15, 2026
+- Prepared by: [Your Name]
+- PRACTICUM DEFENSE
+- International University of Business Agriculture & Technology
+- Presentation By :
+- 
+- Sarder Rifat Rahman Bandhan
+- October 04, 2025
+- M. M Rakibul Hasan
+- Assistant Professor
+- Department of Computer Science & Engineering
+- Supervised By :
+- ID : 21303158
+- 1
+
+SLIDE 2
+Title: [No Title]
+Text content:
+- Introduction
+- Project Overview
+- Process Model
+- Requirement Engineering
+- System Planning
+- Risk Management
+- Cost Estimation
+- Designing/Analysis Modeling
+- Demonstration
+- Limitation
+- Future Plan
+- Conclusion
+- October 04, 2025
+- Introduction
+- Project Overview
+- Process Model
+- Requirement Engineering
+- System Planning
+- Risk Management
+- Cost Estimation
+- Designing / Analysis Modeling
+- Demonstration
+- Limitation
+- Future Plan
+- Conclusion
+- 2
+
+SLIDE 3
+Title: [No Title]
+Text content:
+- Web-based Restaurant Management System
+- Supports customers, staff, chefs, cashiers, admins
+- Automates orders, kitchen flow, inventory, tables, payments, reports
+- ORGANIZATION
+- Company Vision
+- "We code better life"
+- Concise, aspirational statement reflecting CODETREE's commitment to enhancing everyday experiences through smart, efficient, and life-enriching digital solutions
+- 
+- Company Mission
+- CODETREE is driven by a bold mission to unite the diverse expertise of designers, developers, and entrepreneurs under one roof—one tree—to deliver the best-quality digital outcomes tailored to client needs
+- CODETREE is an innovative and forward-thinking company that provides an array of services in Web Development & Solutions, Custom Software Development, Mobile Application Development, Digital Marketing, Cloud Hosting, Graphic Design, Point-of-Sale Systems, Inventory Management, School & College Management Systems, Donation Management Platforms, Bulk SMS Services, and IT Consultation.
+- 
+- Established in 2017, CODETREE has positioned itself as a leading software development company based in Dhaka, Bangladesh, with an international presence in Ontario, Canada. The company operates under the vision "We code  better life", reflecting their commitment to enhancing everyday experiences through smart, efficient, and life-enriching digital solutions.
+- CODETREE
+- Location: House 73F, Road 12B, Sector 10, Uttara, Dhaka 1230, Bangladesh
+- Contact: Phone: 01710070606
+- Email: codetreebd@gmail.com
+- Working Hours: 09:00 AM – 06:00 PM
+- 3
+
+SLIDE 4
+Title: [No Title]
+Text content:
+- Built with Laravel 11, PHP 8.2+, Blade and Vite
+- Eloquent ORM, MySQL
+- Modules: auth, orders, menu, kitchen, inventory, tables, reports, admin site settings
+- Centralized branding via SiteSettings and SiteHelper
+- PROJECT OVERVIEW
+- "Restaurant Point of Sale System for CODETREE" is responsible for managing all aspects of restaurant operations, including order management, inventory tracking, payment processing, and comprehensive reporting.
+- 
+- This system helps restaurants automate their daily operations and eliminate manual errors that commonly occur in order taking, billing, and inventory management.
+- 
+- The primary objective of the "Restaurant Point of Sale System" project is to automate restaurant workflows, streamline operations, reduce processing time, and enhance overall service quality.
+- Built with modern web technologies (React.js frontend, Laravel backend, MySQL database), the system ensures reliable performance, secure data handling, and scalable restaurant management solutions.
+- 4
+
+SLIDE 5
+Title: [No Title]
+Text content:
+- Iterative development model
+- Module-level development, frequent demos, and feedback
+- Early delivery of working features and quick fixes
+- PROCESS MODEL
+- Fig : Iterative Process Model
+- 5
+
+SLIDE 6
+Title: [No Title]
+Text content:
+- Lower integration risk
+- Faster feedback from stakeholders
+- Easier incremental testing and fixes
+- PROCESS MODEL CONT...
+- Why the Iterative Model?
+- Quick Response - Stakeholders can test each module independently.
+- Lower Risk - Thorough testing before integration reduces development failures.
+- Fast Delivery - Working modules generated quickly during development cycle.
+- Flexible Changes - Modify individual modules without system-wide impact.
+- Easy Error Fixes - Isolated testing identifies problems before integration.
+- Early Working Features - Restaurant can use POS functions immediately.
+- Staff Feedback - Real user input after each iteration improves usability.
+- Validated Accuracy - Multiple testing cycles ensure critical POS requirements.
+- Manageable Phases - Complex workflows broken into smaller development tasks.
+- Gradual Deployment - Core features first, advanced features added later.
+- 6
+
+SLIDE 7
+Title: [No Title]
+Text content:
+- Functional & Non-Functional requirements
+- User roles: admin, manager, chef, cashier, customer
+- REQUIREMENT ENGINEERING
+- User Requirements
+- System Requirement
+- Functional Requirement
+- Non-Functional Requirement
+- 7
+
+SLIDE 8
+Title: [No Title]
+Text content:
+- Secure login
+- Menu configuration and availability
+- Order processing and receipt generation
+- Inventory control and low-stock alerts
+- Reporting and analytics
+- REQUIREMENT ENGINEERING
+- User Requirements
+- (Admin Role Requirements):
+- Secure Login - Access with protected credentials.
+- Operations Management - Control orders, payments, and inventory.
+- Menu Configuration - Set items, pricing, categories, and settings.
+- Order Processing - Handle customer orders and payment transactions.
+- Report Generation - Create daily, weekly, and monthly reports.
+- Data Validation - Verify all restaurant data and system information.
+- Inventory Control - Manage stock levels and supplier information.
+- Activity Monitoring - Track restaurant activities and ensure accuracy.
+- Full Authority - Add, modify, or remove system data and configurations.
+- Customer Management - Handle customer data, order history, and feedback.
+- 8
+
+SLIDE 9
+Title: [No Title]
+Text content:
+- Performance, security, reliability, and maintainability
+- Role-based access and audit logging
+- Data backups and graceful error handling
+- REQUIREMENT ENGINEERING CONT ...
+- System Requirement
+- Admin Login Process:
+- Enter Credentials - Admin inputs username and password, clicks submit.
+- Successful Login - Correct credentials grant direct dashboard access with full system control.
+- Failed Login - Incorrect credentials display "invalid user info" error message.
+- 9
+
+SLIDE 10
+Title: [No Title]
+Text content:
+- Order creation, approval, payment recording
+- Kitchen queue and status transitions
+- Recipe-based inventory deduction
+- Table and seating status management
+- Centralized Operations - Admin manages all restaurant operations from single interface
+- Customer Database - Stores customer information, contact details, order preferences, and payment history
+- Menu Management - Complete database with item details, pricing, categories, availability, and ingredients (admin-controlled)
+- Order Processing - Handles orders from placement to completion with status tracking, payments, and receipts
+- Inventory Control - Real-time management with automatic alerts, supplier tracking, and stock monitoring (admin-only)
+- Business Reports - Generates sales analytics, inventory reports, and performance metrics (admin-exclusive
+- REQUIREMENT ENGINEERING CONT ...
+- Functional Requirement
+- 10
+
+SLIDE 11
+Title: [No Title]
+Text content:
+- Response time targets
+- Browser compatibility
+- Scalability expectations and maintainability
+- REQUIREMENT ENGINEERING CONT ...
+- Non-Functional Requirement
+- Performance Requirements:
+- Responds within 5 seconds for all actions
+- Handles up to 10,000 daily transactions
+- Supports multiple admin sessions
+- Fast data retrieval for analytics (<3 seconds)
+- Security Requirements:
+- Data encryption for payments and sensitive info
+- Role-based access with admin verification
+- Audit logging of all actions and transactions
+- Automatic secure daily backups
+- Reliability Requirements:
+- 99.9% system uptime with failover
+- Graceful error handling and recovery
+- Ensures data integrity for orders, payments, inventory
+- Fast backup and recovery
+- 11
+
+SLIDE 12
+Title: [No Title]
+Text content:
+- Clean UI for staff operations
+- Responsive website for customers
+- Minimal training required
+- REQUIREMENT ENGINEERING CONT ...
+- Non-Functional Requirement
+- Usability Requirements
+- Intuitive, user-friendly interface
+- Simple, minimal-training navigation
+- Easy-access dashboards for key functions
+- Clear confirmation and validation messages
+- Scalability Requirements
+- Supports 200% transaction/database growth
+- Expandable storage for menus, customers, history
+- Modular, easily expandable features
+- Maintainability Requirements
+- Clean, well-documented code (React.js, Laravel, MySQL)
+- Easy updates and bug fixes
+- Built-in monitoring tools
+- Portability Requirements
+- Works on desktop, tablet, mobile (web-based)
+- Compatible with major browsers
+- Runs on multiple operating systems
+- 12
+
+SLIDE 13
+Title: [No Title]
+Text content: [None]
+
+SLIDE 14
+Title: [No Title]
+Text content:
+- Function point / size estimation for core modules
+- Helps plan schedule and resources
+- A comprehensive analysis of software estimation techniques for restaurant management systems, including function point analysis, project scheduling, and cost estimation.
+- 14
+
+SLIDE 15
+Title: [No Title]
+Text content:
+- Key functions: user mgmt, menu, orders, payments, inventory, reporting
+- Function Point Estimation (FPE) is a standard technique used to measure the size and complexity of a software application from the user's perspective. For the POS System for Restaurants, FPE is used to evaluate the system's functional components, focusing on order processing, payment handling, inventory management, and reporting.
+- Functionality, Input, Output
+- Functionality
+- Input
+- Output
+- 1. User Management
+- User details, role assignments
+- Confirmation Message or Error Message
+- 2. Menu Management
+- Menu items, pricing, categories
+- Confirmation Message or Error Message
+- 3. Order Processing
+- Order details, customer preferences
+- Order confirmation, receipt
+- 4. Payment & Receipts
+- Payment details (cash, card, etc.)
+- Payment confirmation, receipt
+- 5. Inventory Management
+- Stock levels, menu items, orders
+- Inventory updates, low stock alerts
+- 6. Sales Reporting
+- Date range, report type
+- Sales report (daily, weekly, monthly)
+- 7. End of Day Process
+- Day-end command
+- Database backup, sales export
+- 8. Customer Feedback
+- Customer feedback
+- Feedback confirmation, report
+- 15
+
+SLIDE 16
+Title: [No Title]
+Text content:
+- Assess transaction and data function complexity for sizing
+- Identify Complexity of Transaction Functions (TF)
+- Functionality
+- Input
+- Output
+- Functionality
+- Input
+- 1 User Management
+- User details, role assignments
+- Confirmation Message or Error Message
+- User Management
+- User details, role assignments
+- 2 Menu Management
+- Menu items, pricing, categories
+- Confirmation Message or Error Message
+- Menu Management
+- Menu items, pricing, categories
+- 3 Order Processing
+- Order details, customer preferences
+- Order confirmation, receipt
+- Order Processing
+- Order details, customer preferences
+- 4 Payment & Receipts
+- Payment details (cash, card, etc.)
+- Payment confirmation, receipt
+- Payment & Receipts
+- Payment details (cash, card, etc.)
+- 5 Inventory Management
+- Stock levels, menu items, orders
+- Inventory updates, low stock alerts
+- Inventory Management
+- Stock levels, menu items, orders
+- 6 Sales Reporting
+- Date range, report type
+- Sales report (daily, weekly, monthly)
+- Sales Reporting
+- Date range, report type
+- 7 End of Day Process
+- Day-end command
+- Database backup, sales export
+- End of Day Process
+- Day-end command
+- 8 Customer Feedback
+- Customer feedback
+- Feedback confirmation, report
+- Customer Feedback
+- Customer feedback
+- 16
+
+SLIDE 17
+Title: [No Title]
+Text content:
+- Classify ILF/EIF and DET/RET to estimate effort
+- Identify Complexity of Data Functions (DF)
+- Data Function
+- Type
+- RET
+- DET
+- Complexity
+- 1 Users
+- ILF
+- 1
+- 7
+- Low
+- 2 Menu Items
+- ILF
+- 1
+- 8
+- Low
+- 3 Orders
+- ILF
+- 1
+- 12
+- Low
+- 4 Transactions
+- ILF
+- 1
+- 10
+- Low
+- 5 Stock
+- ILF
+- 1
+- 6
+- Low
+- 6 Reports
+- ILF
+- 1
+- 9
+- Low
+- 17
+
+SLIDE 18
+Title: [No Title]
+Text content:
+- Combined UFP indicates project size and effort
+- Unadjusted Function Point Contribution
+- 18
+
+SLIDE 19
+Title: [No Title]
+Contains 1 image(s)/diagram(s): KEEP THESE VISUALS IN-PLACE
+Text content:
+- Breakdown by function: user, menu, orders, payments, inventory, reports
+- UFP OF TF
+- Transaction Function
+- TF
+- FTR
+- DET
+- Complexity
+- UFP
+- 1. User Management
+- EI
+- 1
+- 3
+- Low
+- 3
+- 2. Menu Management
+- EI
+- 2
+- 5
+- Avg
+- 4
+- 3. Order Processing
+- EI
+- 2
+- 6
+- Low
+- 4
+- 4. Payment & Receipts
+- EI
+- 2
+- 6
+- Low
+- 4
+- 5. Inventory Management
+- EI
+- 2
+- 4
+- Low
+- 3
+- 6. Sales Reporting
+- EO
+- 2
+- 3
+- Low
+- 4
+- 7. End of Day Process
+- EI
+- 1
+- 2
+- Low
+- 3
+- 8. Customer Feedback
+- EO
+- 1
+- 3
+- Low
+- 4
+- Total UFP (TF) 35
+- Table: shows the unadjusted function point contribution of data functions.
+- 19
+
+SLIDE 20
+Title: [No Title]
+Contains 3 image(s)/diagram(s): KEEP THESE VISUALS IN-PLACE
+Text content:
+- Calculate Total Degree of Influence to adjust UFP
+- Total UFP
+- UFP(TF) + UFP(DF) = 35 + 49 = 84
+- CALCULATION OF TOTAL DEGREE OF INFLUENCE (TDI) :
+- 3
+- 1
+- 3
+- Final Calculation
+- 20
+
+SLIDE 21
+Title: [No Title]
+Text content:
+- Planned timeline and milestones (12 weeks)
+- Project Scheduling
+- The project is planned to be completed in 12 weeks (3 months). Below is the Gantt chart illustrating the schedule:
+- 21
+
+SLIDE 22
+Title: [No Title]
+Contains 1 image(s)/diagram(s): KEEP THESE VISUALS IN-PLACE
+Text content: [None]
+
+SLIDE 23
+Title: [No Title]
+Text content:
+- Requirements & Planning (W1-2)
+- Design & Analysis (W3-4)
+- Development (W5-8)
+- Testing (W9-10)
+- Deployment (W11-12)
+- 01
+- Planning & Requirement Gathering
+- Conduct background research and study
+- Complete requirements analysis
+- Prepare requirements specification in week 3
+- 02
+- Analysis Modelling
+- Create use case, class, and object diagrams
+- Present demo in week 5
+- 03
+- Design
+- ER and DFD design in week 5
+- Input/output design in week 6
+- 04
+- Coding
+- Main coding and documentation phase
+- 05
+- Testing
+- Self-testing in week 10
+- Reviews and retrospective in weeks 11–12
+- 23
+
+SLIDE 24
+Title: [No Title]
+Text content:
+- Week 2: Requirements
+- Week 4: Design
+- Week 6: Core features
+- Week 10: Testing
+- Week 12: Delivery
+- 1
+- Week 3: Requirements specification completed
+- 2
+- Week 6: System design finalised
+- 3
+- Week 8: Core functionality implementation
+- 4
+- Week 10: Alpha version testing begins
+- 5
+- Week 12: Final system delivery and documentation
+- Resource Allocation:
+- Weeks 1-3: Business analysts and stakeholders
+- Weeks 4-6: System architects and designers
+- Weeks 7-10: Development team (Frontend & Backend)
+- Weeks 11-12: QA team and end users
+- 24
+
+SLIDE 25
+Title: [No Title]
+Text content:
+- Risk identification, mitigation, monitoring, and response
+- A comprehensive risk management framework designed specifically for restaurant Point of Sale system development and operations.
+- 25
+
+SLIDE 26
+Title: [No Title]
+Text content:
+- Prevention, monitoring, management and continuous improvement
+- Risk Mitigation
+- Proactive planning to prevent risks before they occur in your POS system
+- Risk Monitoring
+- Continuous assessment of system performance and emerging threats
+- Risk Management
+- Immediate response actions when mitigation fails and risks materialize
+- Each component works together to ensure your restaurant POS system remains resilient and operational during critical business hours.
+- 26
+
+SLIDE 27
+Title: [No Title]
+Text content:
+- Automated backups
+- Role-based access
+- Inventory guards
+- Performance monitoring
+- Payment logging
+- 01
+- Automated Backup Systems
+- Implement robust backup protocols during day-end processes to protect transaction data and prevent revenue loss.
+- 02
+- Role-Based Access Controls
+- Establish secure user management with granular permissions to protect sensitive customer and financial data.
+- 03
+- Database Integrity Checks
+- Schedule regular validation processes to ensure order data remains accurate and consistent across all systems.
+- 04
+- Payment Testing Protocols
+- Establish comprehensive testing procedures for payment processing functionality before deployment.
+- 27
+
+SLIDE 28
+Title: [No Title]
+Text content:
+- Real-time updates, low-stock alerts, supplier tracking
+- Accuracy target: operational checks and reconciliation
+- Key Monitoring Points
+- Real-time stock level updates
+- Ingredient usage patterns
+- Waste tracking and reporting
+- Supplier integration status
+- Continuous evaluation prevents stock discrepancies that could impact menu availability and customer satisfaction.
+- 99.7%
+- Accuracy Target
+- Inventory tracking precision goal
+- 15MIN
+- Update Frequency
+- Real-time sync intervals
+- 28
+
+SLIDE 29
+Title: [No Title]
+Text content:
+- Immediate response, short-term actions, recovery plan and post-incident analysis
+- EMERGENCY RESPONSE PROTOCOLS
+- When mitigation strategies fail and risks become live problems, immediate action is critical. Your POS system needs predefined response procedures that can be executed quickly and effectively.
+- System Failure Response
+- Rollback mechanisms to restore order data and maintain transaction integrity
+- Payment Gateway Backup
+- Alternative processing methods when primary systems fail
+- Manual Override Procedures
+- Emergency protocols for continued operations during downtime
+- 29
+
+SLIDE 30
+Title: [No Title]
+Text content:
+- 0-2 min: switch to manual/backup
+- 2-15 min: contain and notify
+- 15+ min: recover, validate, analyze
+- 1
+- Immediate Response (0-2 min)
+- Activate backup payment processing, switch to manual order tracking, notify management of system status.
+- 2
+- Short-term Actions (2-15 min)
+- Deploy alternative inventory tracking, implement paper-based backup procedures, contact technical support.
+- 3
+- Recovery Phase (15+ min)
+- Execute rollback mechanisms, validate data integrity, conduct post-incident analysis for future improvements.
+- 30
+
+SLIDE 31
+Title: [No Title]
+Text content:
+- Proactive mitigation, monitoring, rapid response, redundancy
+- Proactive Mitigation
+- Prevent issues before they impact operations through robust system design
+- Continuous Monitoring
+- Real-time oversight ensures early detection of potential problems
+- Rapid Response
+- Quick action protocols minimize downtime and protect revenue
+- The RMMM framework provides a comprehensive approach to risk management that keeps your restaurant POS system operational when it matters most.
+- 31
+
+SLIDE 32
+Title: [No Title]
+Text content: [None]
+
+SLIDE 33
+Title: [No Title]
+Text content: [None]
+
+SLIDE 34
+Title: [No Title]
+Text content: [None]
+
+SLIDE 35
+Title: [No Title]
+Text content: [None]
+
+SLIDE 36
+Title: [No Title]
+Text content: [None]
+
+SLIDE 37
+Title: [No Title]
+Text content: [None]
+
+SLIDE 38
+Title: [No Title]
+Text content: [None]
+
+SLIDE 39
+Title: [No Title]
+Text content: [None]
+
+SLIDE 40
+Title: [No Title]
+Text content: [None]
+
+SLIDE 41
+Title: [No Title]
+Text content: [None]
+
+SLIDE 42
+Title: [No Title]
+Text content: [None]
+
+SLIDE 43
+Title: [No Title]
+Text content: [None]
+
+SLIDE 44
+Title: [No Title]
+Text content: [None]
+
+SLIDE 45
+Title: [No Title]
+Text content: [None]
+
+SLIDE 46
+Title: [No Title]
+Text content: [None]
+
+SLIDE 47
+Title: [No Title]
+Text content:
+- 47
+
+SLIDE 48
+Title: [No Title]
+Text content:
+- Web-only (no native app)
+- Manual payment handling
+- No public API
+- Basic analytics only
+- Despite its strong features, the current Restaurant POS System has some limitations:
+- Scalability Constraints:
+- The system works well for current transaction volumes but future growth in restaurant size or transaction volume may require additional optimization and scaling efforts
+- External System Integration:
+- Currently relies on manual processes or file-based integrations for tasks like supplier data updates or accounting software integration
+- Limited API-based integrations could streamline these processes
+- Mobile Accessibility:
+- System is primarily desktop-focused with limited mobile-responsive features
+- Staff cannot access full functionality from mobile devices during service
+- Real-time Features:
+- Basic dashboard functionality without advanced live updates
+- Limited real-time notifications for critical restaurant operations
+- Advanced Analytics:
+- Current reporting focuses on basic sales and inventory data
+- Lacks predictive analytics for demand forecasting and customer behavior analysis
+- 48
+
+SLIDE 49
+Title: [No Title]
+Text content:
+- Mobile apps, API layer, online payments, real-time dashboard, advanced analytics, multi-branch support
+- Future Work
+- To exceed present limitations and improve the system, the following areas are suggested for future enhancement:
+- 49
+
+SLIDE 50
+Title: [No Title]
+Text content:
+- Consider cloud deployment, caching (Redis), DB optimization for higher load
+- Migrating to cloud-based infrastructure or using optimized database solutions (e.g., cloud MySQL)
+- Implementing caching mechanisms such as Redis to improve performance for higher transaction volumes
+- Real-Time Features:
+- Developing a live dashboard using web technologies for real-time insights into sales, order statuses, inventory levels, and critical alerts for restaurant managers and staff
+- Advanced Integration:
+- Replacing file-based data transfers with secure RESTful APIs or direct integrations for payment gateways, inventory suppliers, and accounting systems
+- Automating workflows to increase system reliability
+- 50
+
+SLIDE 51
+Title: [No Title]
+Text content:
+- RMS automates core restaurant workflows, improves accuracy, and reduces manual effort
+- Project Success and Impact:
+- The development of the Restaurant Point of Sale System for CODETREE was a comprehensive and successful practicum that provided invaluable real-world experience in designing a business application. Built with React.js, Laravel, and MySQL, the system successfully automates day-to-day restaurant operations including order management, inventory tracking, payment processing, and reporting.
+- 51
+
+SLIDE 52
+Title: [No Title]
+Text content:
+- Modular Laravel architecture
+- Centralized branding
+- Role-based workflows
+- Inventory and reporting features
+- The project demonstrated effective integration of modern web technologies, creating a robust system that handles all aspects of restaurant operations with minimal manual intervention. The iterative development approach ensured high quality through continuous testing and stakeholder feedback.
+- Business Value:
+- The system significantly enhances operational efficiency, reduces manual errors, improves customer satisfaction, and provides restaurant owners with confidence to run their businesses smoothly. The automated reporting capabilities enable data-driven decision making for restaurant management.
+- Learning Outcomes:
+- This practicum provided comprehensive experience in full-stack development, database design and management, business logic implementation, security and compliance, and project management. The skills acquired include React.js and Laravel expertise, MySQL optimization, restaurant workflow automation, and professional software development practices.
+- Future Ready:
+- The current system provides a solid foundation for continued enhancement and evolution. With planned improvements in scalability, mobile accessibility, and advanced analytics, the system is positioned to grow with restaurant business needs and technological advancements.
+- The Restaurant POS System successfully meets its objectives of enhancing efficiency, transparency, and reliability in restaurant operations while providing a platform for future technological innovation in the food service industry.
+- 52
+
+SLIDE 53
+Title: [No Title]
+Text content:
+- Questions? Contact: [your email]
+- THANK YOU SO MUCH!
+- Presentation By: Sarder Rifat Rahman Bandhan
+- October 04, 2025
+- ID : 21303158
+- 53
+

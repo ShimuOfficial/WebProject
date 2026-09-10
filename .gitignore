@@ -1,46 +1,31 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+.DS_Store
+**/.DS_Store
 .env
+**/.env
 .env.backup
 .env.production
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
-/.vscode
-.DS_Store
-**/.DS_Store
-
-# Temporary and cache files
-.phpunit.result.cache
-*.cache
-.tmp-*
-.tmp/*
-
-# Office documents (version backups)
-*.docx
-*.doc
-!docs/archive/*.docx
-!docs/archive/*.doc
-
-# VS Code notebooks
-.notebook/
-.vscode/
-
-# Screenshots and images (if in docs)
-*.png
-*.jpg
-*.jpeg
-
-# Temporary files
-tmp/
+**/.phpunit.result.cache
+node_modules/
+vendor/
 *.tmp
+tmp/
+*.cache
+
+/rms-app/vendor/
+/rms-app/node_modules/
+/rms-app/public/hot
+/rms-app/public/storage
+/rms-app/public/build
+/rms-app/storage/*.key
+/rms-app/storage/logs/
+/rms-app/storage/framework/cache/
+/rms-app/storage/framework/sessions/
+/rms-app/storage/framework/views/
+/rms-app/bootstrap/cache/*.php
+/rms-app/SSLCommerz-Laravel-master/
+/rms-app/jerin report.pdf
+
+/rms-app/.git/
+/rms-app/.git.bak/
+

@@ -1,0 +1,474 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="RMS Organized ERD" id="rms-organized-erd">
+    <mxGraphModel dx="2408" dy="1634" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2PgZQyxuHyklQVOm7c2p-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=light-dark(#000000,#000000);" value="" vertex="1">
+          <mxGeometry height="1140" width="2390" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Admin" vertex="1">
+          <mxGeometry height="50" width="170" x="1080" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="customer" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Customer" vertex="1">
+          <mxGeometry height="50" width="170" x="120" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="chef" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Chef" vertex="1">
+          <mxGeometry height="50" width="170" x="120" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="table" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Dining Table" vertex="1">
+          <mxGeometry height="50" width="180" x="470" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="order" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#EAF7F2;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Order" vertex="1">
+          <mxGeometry height="50" width="180" x="760" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#EAF7F2;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Payment Transaction" vertex="1">
+          <mxGeometry height="50" width="260" x="720" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="menu" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Menu Item" vertex="1">
+          <mxGeometry height="50" width="180" x="1450" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;fontStyle=1;fillColor=#FFF6EA;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="Inventory Item" vertex="1">
+          <mxGeometry height="50" width="190" x="2050" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_admin_table" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="manages" vertex="1">
+          <mxGeometry height="70" width="120" x="840" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_admin_menu" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="manages" vertex="1">
+          <mxGeometry height="70" width="120" x="1270" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_admin_inventory" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#B54827;fontSize=20;fontColor=light-dark(#000000,#000000);" value="manages" vertex="1">
+          <mxGeometry height="70" width="120" x="1680" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_customer_order" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="places" vertex="1">
+          <mxGeometry height="70" width="120" x="430" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_table_order" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="assigned to" vertex="1">
+          <mxGeometry height="75" width="130" x="610" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_chef_order" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="prepares" vertex="1">
+          <mxGeometry height="70" width="120" x="480" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_order_payment" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="paid by" vertex="1">
+          <mxGeometry height="70" width="120" x="790" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_order_menu" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="contains" vertex="1">
+          <mxGeometry height="80" width="130" x="1110" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_menu_inventory" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFFFFF;strokeColor=#2F7D67;fontSize=20;fontColor=light-dark(#000000,#000000);" value="requires" vertex="1">
+          <mxGeometry height="80" width="130" x="1730" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;admin_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="950" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="name" vertex="1">
+          <mxGeometry height="40" width="90" x="1090" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_email" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="email" vertex="1">
+          <mxGeometry height="40" width="90" x="1200" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_phone" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="phone" vertex="1">
+          <mxGeometry height="40" width="90" x="900" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_active" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="is_active" vertex="1">
+          <mxGeometry height="40" width="100" x="1350" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;customer_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="10" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="name" vertex="1">
+          <mxGeometry height="40" width="90" x="150" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_email" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="email" vertex="1">
+          <mxGeometry height="40" width="90" x="260" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_phone" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="phone" vertex="1">
+          <mxGeometry height="40" width="90" x="65" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_active" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="is_active" vertex="1">
+          <mxGeometry height="40" width="100" x="240" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;chef_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="110" x="30" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="name" vertex="1">
+          <mxGeometry height="40" width="90" x="150" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_email" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="email" vertex="1">
+          <mxGeometry height="40" width="90" x="260" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_phone" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="phone" vertex="1">
+          <mxGeometry height="40" width="90" x="65" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_active" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="is_active" vertex="1">
+          <mxGeometry height="40" width="100" x="240" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="table_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;table_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="110" x="310" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="table_number" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="table_number" vertex="1">
+          <mxGeometry height="40" width="130" x="490" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="table_capacity" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="capacity" vertex="1">
+          <mxGeometry height="40" width="100" x="660" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="table_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="status" vertex="1">
+          <mxGeometry height="40" width="90" x="200" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="table_location" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="location" vertex="1">
+          <mxGeometry height="40" width="100" x="370" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="order_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;order_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="110" x="620" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="order_number" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="order_number" vertex="1">
+          <mxGeometry height="40" width="130" x="780" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="order_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="status" vertex="1">
+          <mxGeometry height="40" width="90" x="920" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="order_total" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="total_amount" vertex="1">
+          <mxGeometry height="40" width="130" x="600" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="order_payment_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="payment_status" vertex="1">
+          <mxGeometry height="40" width="140" x="670" y="775" as="geometry" />
+        </mxCell>
+        <mxCell id="order_source" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="order_source" vertex="1">
+          <mxGeometry height="40" width="120" x="940" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;payment_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="575" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_transaction_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="transaction_id" vertex="1">
+          <mxGeometry height="40" width="130" x="730" y="935" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_amount" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="amount" vertex="1">
+          <mxGeometry height="40" width="90" x="895" y="955" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_status" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="status" vertex="1">
+          <mxGeometry height="40" width="90" x="690" y="1120" as="geometry" />
+        </mxCell>
+        <mxCell id="payment_gateway" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="gateway" vertex="1">
+          <mxGeometry height="40" width="100" x="930" y="1115" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;menu_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="110" x="1340" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="name" vertex="1">
+          <mxGeometry height="40" width="90" x="1490" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_category" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="category" vertex="1">
+          <mxGeometry height="40" width="100" x="1600" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_price" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="price" vertex="1">
+          <mxGeometry height="40" width="90" x="1380" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_available" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="is_available" vertex="1">
+          <mxGeometry height="40" width="120" x="1580" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;inventory_id&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="1880" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="item_name" vertex="1">
+          <mxGeometry height="40" width="110" x="2090" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_qty" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="quantity" vertex="1">
+          <mxGeometry height="40" width="100" x="2220" y="535" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_unit" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="unit" vertex="1">
+          <mxGeometry height="40" width="90" x="1960" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_min" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="min_quantity" vertex="1">
+          <mxGeometry height="40" width="120" x="2110" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_supplier" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="supplier" vertex="1">
+          <mxGeometry height="40" width="100" x="2260" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="contains_quantity" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="quantity" vertex="1">
+          <mxGeometry height="40" width="100" x="1020" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="contains_unit_price" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="unit_price" vertex="1">
+          <mxGeometry height="40" width="110" x="1240" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="contains_subtotal" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;dashed=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="subtotal" vertex="1">
+          <mxGeometry height="40" width="100" x="990" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="requires_quantity" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=20;fontColor=light-dark(#000000,#000000);" value="quantity_per_dish" vertex="1">
+          <mxGeometry height="40" width="160" x="1715" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_id" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="admin_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_name" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="admin_name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_email" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="admin_email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_phone" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="admin_phone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_active" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="admin_active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_id" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="customer_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_name" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="customer_name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_email" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="customer_email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_phone" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="customer_phone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_customer_active" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="customer_active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_chef_id" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="chef_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_chef_name" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="chef_name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_chef_email" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="chef_email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_chef_phone" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="chef_phone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_chef_active" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="chef_active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_table_id" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_table_number" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table_number">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_table_capacity" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table_capacity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_table_status" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_table_location" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table_location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_id" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_number" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_number">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_status" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_total" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_total">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_payment_status" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_payment_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_order_source" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order_source">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_id" edge="1" parent="1" source="payment" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_transaction_id" edge="1" parent="1" source="payment" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment_transaction_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_amount" edge="1" parent="1" source="payment" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment_amount">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_status" edge="1" parent="1" source="payment" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_payment_gateway" edge="1" parent="1" source="payment" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment_gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menu_id" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menu_name" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu_name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menu_category" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu_category">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menu_price" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu_price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menu_available" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu_available">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_id" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_name" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_name">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_qty" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_qty">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_unit" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_unit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_min" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_min">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_inventory_supplier" edge="1" parent="1" source="inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory_supplier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_contains_quantity" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="contains_quantity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_contains_unit_price" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="contains_unit_price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_contains_subtotal" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="contains_subtotal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_requires_quantity" edge="1" parent="1" source="rel_menu_inventory" style="endArrow=none;html=1;rounded=0;fontSize=20;fontColor=light-dark(#000000,#000000);" target="requires_quantity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_table_a" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_admin_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_table_l1" connectable="0" parent="admin_table_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="-15" y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin_table_b" edge="1" parent="1" source="rel_admin_table" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_table_ln" connectable="0" parent="admin_table_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="24" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin_menu_a" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_admin_menu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_menu_l1" connectable="0" parent="admin_menu_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="-7" y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin_menu_b" edge="1" parent="1" source="rel_admin_menu" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_menu_ln" connectable="0" parent="admin_menu_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_inventory_a" edge="1" parent="1" source="admin" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_admin_inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_inventory_l1" connectable="0" parent="admin_inventory_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="63" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="admin_inventory_b" edge="1" parent="1" source="rel_admin_inventory" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_inventory_ln" connectable="0" parent="admin_inventory_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="customer_order_a" edge="1" parent="1" source="customer" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_customer_order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_order_l1" connectable="0" parent="customer_order_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_order_b" edge="1" parent="1" source="rel_customer_order" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="customer_order_ln" connectable="0" parent="customer_order_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="table_order_a" edge="1" parent="1" source="table" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_table_order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="table_order_l1" connectable="0" parent="table_order_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="table_order_b" edge="1" parent="1" source="rel_table_order" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="table_order_ln" connectable="0" parent="table_order_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="chef_order_a" edge="1" parent="1" source="chef" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_chef_order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_order_l1" connectable="0" parent="chef_order_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_order_b" edge="1" parent="1" source="rel_chef_order" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="chef_order_ln" connectable="0" parent="chef_order_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-5" y="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="order_payment_a" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_order_payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_payment_l1" connectable="0" parent="order_payment_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint y="25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="order_payment_b" edge="1" parent="1" source="rel_order_payment" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_payment_ln" connectable="0" parent="order_payment_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_menu_a" edge="1" parent="1" source="order" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_order_menu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_menu_lm" connectable="0" parent="order_menu_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="M" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="20" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="order_menu_b" edge="1" parent="1" source="rel_order_menu" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="menu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_menu_ln" connectable="0" parent="order_menu_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-26" y="24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="menu_inventory_a" edge="1" parent="1" source="menu" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="rel_menu_inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_inventory_lm" connectable="0" parent="menu_inventory_a" style="resizable=0;html=1;whiteSpace=wrap;align=left;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="M" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="20" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="menu_inventory_b" edge="1" parent="1" source="rel_menu_inventory" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fontSize=20;fontColor=light-dark(#000000,#000000);" target="inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="menu_inventory_ln" connectable="0" parent="menu_inventory_b" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;fontStyle=1;fontSize=20;fontColor=light-dark(#000000,#000000);" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-21" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
