@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.6 / §5.7 order list + approve customer button --}}
 @extends('layouts.app')
 @section('title', 'Orders')
 @section('subtitle', 'Manage all restaurant orders')

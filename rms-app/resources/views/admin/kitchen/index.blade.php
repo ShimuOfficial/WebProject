@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.8 kitchen display (KDS) --}}
 @extends('layouts.app')
 @section('title', 'Kitchen Display')
 @section('subtitle', 'Live ticket view for chefs')

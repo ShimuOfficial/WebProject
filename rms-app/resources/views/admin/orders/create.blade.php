@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.6 staff dine-in create order --}}
 @extends('layouts.app')
 @section('title', 'Create Order')
 @section('subtitle', 'Add a new order')

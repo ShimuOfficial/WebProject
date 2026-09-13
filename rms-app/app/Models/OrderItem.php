@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/** DEFENSE: order line — unit_price is a snapshot so later menu price changes do not rewrite history */
 class OrderItem extends Model
 {
     use HasFactory;

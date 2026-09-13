@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DEFENSE: §5.13 stock items — quantity, min_quantity, unit; linked via menu_ingredients
+ */
 class Inventory extends Model
 {
     use HasFactory;

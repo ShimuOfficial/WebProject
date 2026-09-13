@@ -9,9 +9,7 @@ use App\Models\MenuIngredient;
 use Illuminate\Http\Request;
 
 /**
- * MenuController
- *
- * Manage CRUD for menu items and their ingredients.
+ * DEFENSE: §5.12 menu CRUD + recipe ingredients (manager); chef uses availability toggle
  */
 class MenuController extends Controller
 {

@@ -7,9 +7,8 @@ use App\Models\Menu;
 use App\Models\Reservation;
 
 /**
- * HomeController
- *
- * Public website pages: home, about, menu and contact.
+ * DEFENSE: §5.1 public website pages
+ * HomeController — home, about, menu, contact.
  */
 class HomeController extends Controller
 {

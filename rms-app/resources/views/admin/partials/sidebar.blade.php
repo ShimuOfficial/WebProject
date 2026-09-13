@@ -1,3 +1,4 @@
+{{-- DEFENSE: staff sidebar — links hidden by $currentUserRole --}}
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
         @php

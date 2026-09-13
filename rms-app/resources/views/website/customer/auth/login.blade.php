@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.3 customer login --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * DEFENSE: §4.2 RBAC — allow listed roles OR users.role === admin
+ * Board: "Cashier kitchen e gele ki hoy?" → abort(403)
+ */
 class RoleMiddleware
 {
     /**
@@ -27,6 +31,7 @@ class RoleMiddleware
             abort(403, 'Unauthorized Access. You do not have the required permissions.');
         }
 
+        // DEFENSE: admin is super-role — passes every role:* check
         if (in_array($user->role, $roles, true) || $user->role === 'admin') {
             return $next($request);
         }

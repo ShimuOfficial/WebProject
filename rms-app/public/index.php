@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+// DEFENSE: front controller — every HTTP request starts here, then Kernel + routes/web.php
 define('LARAVEL_START', microtime(true));
 
 /*

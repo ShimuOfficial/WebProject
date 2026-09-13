@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * StaffController
- *
- * Manage staff accounts (manager, chef, cashier): list, create, update, delete.
+ * DEFENSE: admin-only staff CRUD (manager / chef / cashier users)
  */
 class StaffController extends Controller
 {

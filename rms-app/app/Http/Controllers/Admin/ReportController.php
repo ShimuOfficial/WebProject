@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * ReportController
- *
- * Generate reports and JSON endpoints for revenue, top items and orders.
+ * DEFENSE: §5.14 / Q17 sales reports — revenue, top dishes, daily JSON for charts
  */
 class ReportController extends Controller
 {

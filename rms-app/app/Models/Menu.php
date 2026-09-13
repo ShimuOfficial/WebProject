@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DEFENSE: §5.12 menu + recipe servings
+ * Board: "Koto serving baki?" → available_servings / isOrderable()
+ */
 class Menu extends Model
 {
     use HasFactory;

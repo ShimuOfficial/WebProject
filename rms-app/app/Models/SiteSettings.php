@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/** DEFENSE: §5.16 singleton branding row (id = 1) */
 class SiteSettings extends Model
 {
     protected $table = 'site_settings';

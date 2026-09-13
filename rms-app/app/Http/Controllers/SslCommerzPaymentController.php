@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * SslCommerzPaymentController
- * Purpose: lightweight demo controller for SSLCommerz sandbox flow.
- * Key actions: create demo order, redirect to gateway, handle callbacks
- * and sync payments to the main `orders` and `payment_transactions` tables.
- * Comments are intentionally concise to aid quick navigation.
+ * DEFENSE: §5.17 SSLCommerz sandbox — pay, success/fail/IPN, local simulate
  */
 class SslCommerzPaymentController extends Controller
 {

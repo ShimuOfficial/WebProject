@@ -1,3 +1,4 @@
+{{-- DEFENSE: public / customer layout (nav, cart badge, site colors) --}}
 <!DOCTYPE html>
 <html lang="en">
 

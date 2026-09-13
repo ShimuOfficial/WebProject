@@ -7,9 +7,7 @@ use App\Models\SiteSettings;
 use Illuminate\Http\Request;
 
 /**
- * SiteSettingsController
- *
- * Admin interface to view and update global site settings (branding, colors, images).
+ * DEFENSE: §5.16 website name, colors, hero, about, logo
  */
 class SiteSettingsController extends Controller
 {

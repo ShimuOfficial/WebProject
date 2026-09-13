@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /**
- * OrderController
- *
- * Admin-facing order management: create, update, payments and inventory deduction.
+ * DEFENSE: §5.6 dine-in create/pay · §5.7 approve · §5.9 status machine
  */
 class OrderController extends Controller
 {
@@ -293,7 +291,7 @@ class OrderController extends Controller
             return back()->withErrors(['status' => 'Order cancellation is disabled.']);
         }
 
-        // Enforce allowed transitions server-side to avoid invalid jumps
+        // DEFENSE: §5.9 / Q6 — server-side status machine (dropdown cheat blocked)
         $allowedTransitions = [
             'pending' => ['pending', 'approved', 'cancelled'],
             'approved' => ['approved', 'preparing', 'cancelled'],
@@ -401,7 +399,7 @@ class OrderController extends Controller
             ->with('success', 'Fast payment completed (full due recorded).');
     }
 
-    // Approve a customer-submitted order so it enters kitchen queue.
+    // DEFENSE: §5.7 — only after this flag is true does KitchenController show the ticket
     public function approveCustomerOrder(Order $order)
     {
         if ($order->order_source !== 'customer') {

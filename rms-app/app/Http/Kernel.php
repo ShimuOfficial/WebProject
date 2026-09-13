@@ -4,6 +4,10 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * DEFENSE: HTTP kernel — middleware groups + aliases
+ * Board: "role middleware kothay register?" → $middlewareAliases['role']
+ */
 class Kernel extends HttpKernel
 {
     /**
@@ -64,6 +68,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // DEFENSE: §4.2 — routes use middleware('role:chef') etc.
         'role' => \App\Http\Middleware\RoleMiddleware::class,
     ];
 }

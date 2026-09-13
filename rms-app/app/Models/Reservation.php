@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DEFENSE: §5.11 reservations — remainingSeats() = table capacity − booked party size
+ */
 class Reservation extends Model
 {
     use HasFactory;

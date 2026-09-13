@@ -9,9 +9,14 @@ use App\Models\Table;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Inventory;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Reservation;
+use App\Models\SiteSettings;
 use Spatie\Permission\Models\Role;
 
+/**
+ * DEFENSE: demo data — staff, customers, BD menu, inventory, orders, reservations
+ * Board: "Test user koi?" → emails below, password: password
+ */
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
@@ -26,10 +31,11 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@restaurant.com'],
             [
-                'name' => 'Admin User',
+                'name' => 'Nafis Rahman',
                 'password' => 'password',
                 'role' => 'admin',
-                'phone' => '555-0100',
+                'phone' => '01711-100100',
+                'address' => 'Gulshan 2, Dhaka',
                 'is_active' => true,
             ]
         )->syncLegacyRole();
@@ -37,10 +43,11 @@ class DatabaseSeeder extends Seeder
         $manager = User::updateOrCreate(
             ['email' => 'sarah@restaurant.com'],
             [
-                'name' => 'Sarah Johnson',
+                'name' => 'Sarah Ahmed',
                 'password' => 'password',
                 'role' => 'manager',
-                'phone' => '555-0101',
+                'phone' => '01711-100101',
+                'address' => 'Banani, Dhaka',
                 'is_active' => true,
             ]
         );
@@ -49,10 +56,11 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'marco@restaurant.com'],
             [
-                'name' => 'Chef Marco',
+                'name' => 'Chef Kamal Hossain',
                 'password' => 'password',
                 'role' => 'chef',
-                'phone' => '555-0104',
+                'phone' => '01711-100104',
+                'address' => 'Mohammadpur, Dhaka',
                 'is_active' => true,
             ]
         )->syncLegacyRole();
@@ -60,14 +68,34 @@ class DatabaseSeeder extends Seeder
         $cashier = User::updateOrCreate(
             ['email' => 'lisa@restaurant.com'],
             [
-                'name' => 'Lisa Chen',
+                'name' => 'Lamia Chowdhury',
                 'password' => 'password',
                 'role' => 'cashier',
-                'phone' => '555-0105',
+                'phone' => '01711-100105',
+                'address' => 'Dhanmondi, Dhaka',
                 'is_active' => true,
             ]
         );
         $cashier->syncLegacyRole();
+
+        $customers = [];
+        $customerSeeds = [
+            ['name' => 'Rahim Uddin', 'email' => 'rahim@customer.com', 'phone' => '01819-221100', 'address' => 'House 12, Road 4, Dhanmondi, Dhaka'],
+            ['name' => 'Fatima Khan', 'email' => 'fatima@customer.com', 'phone' => '01912-334455', 'address' => 'Flat 5B, Banani DOHS, Dhaka'],
+            ['name' => 'Tanvir Hasan', 'email' => 'tanvir@customer.com', 'phone' => '01617-556677', 'address' => 'Block C, Bashundhara R/A, Dhaka'],
+        ];
+        foreach ($customerSeeds as $seed) {
+            $customer = User::updateOrCreate(
+                ['email' => $seed['email']],
+                array_merge($seed, [
+                    'password' => 'password',
+                    'role' => 'customer',
+                    'is_active' => true,
+                ])
+            );
+            $customer->syncLegacyRole();
+            $customers[] = $customer;
+        }
 
         // ===== MENU ITEMS =====
         $riceItems = [
@@ -240,6 +268,100 @@ class DatabaseSeeder extends Seeder
                 ['item_name' => $item['item_name']],
                 $item
             );
+        }
+
+        $onlineTable = Table::updateOrCreate(
+            ['table_number' => 'ONLINE'],
+            [
+                'capacity' => 0,
+                'status' => 'available',
+                'location' => 'Delivery',
+            ]
+        );
+
+        SiteSettings::updateOrCreate(
+            ['id' => 1],
+            [
+                'website_name' => 'Spice Garden',
+                'website_tagline' => 'Home-style Bangladeshi kitchen in Dhaka',
+                'hero_badge' => 'Open today · 11:00 AM – 11:00 PM',
+                'hero_title' => 'Biryani, Bhuna,',
+                'hero_accent' => 'Cooked Fresh.',
+                'hero_subtitle' => 'Order kacchi, tehari, and home-style curries online, reserve a table, or walk in for a warm meal in Dhanmondi.',
+                'primary_color' => '#FF6B35',
+                'secondary_color' => '#004E89',
+                'accent_color' => '#F7C59F',
+                'phone_number' => '01711-445566',
+                'email_address' => 'hello@spicegarden.test',
+                'address' => 'House 27, Road 8, Dhanmondi, Dhaka 1205',
+                'opening_hours' => 'Sat–Thu 11:00 AM – 11:00 PM · Friday 3:00 PM – 11:00 PM',
+                'about_us' => 'Spice Garden is a neighbourhood kitchen serving Dhaka-style biryani, bhuna, and sweets. We cook in small batches, keep a live inventory for the kitchen, and take both dine-in and online orders.',
+            ]
+        );
+
+        $reservationSeeds = [
+            ['user' => $customers[0], 'table' => $tables[1], 'date' => now()->addDay()->toDateString(), 'slot' => '19:00', 'size' => 4, 'status' => 'confirmed', 'notes' => 'Window table if possible'],
+            ['user' => $customers[1], 'table' => $tables[8], 'date' => now()->addDays(2)->toDateString(), 'slot' => '20:00', 'size' => 6, 'status' => 'pending', 'notes' => 'Birthday dinner'],
+            ['user' => $customers[2], 'table' => $tables[5], 'date' => now()->addDays(3)->toDateString(), 'slot' => '13:00', 'size' => 3, 'status' => 'confirmed', 'notes' => null],
+        ];
+        foreach ($reservationSeeds as $booking) {
+            Reservation::updateOrCreate(
+                [
+                    'email' => $booking['user']->email,
+                    'reservation_date' => $booking['date'],
+                    'time_slot' => $booking['slot'],
+                ],
+                [
+                    'user_id' => $booking['user']->id,
+                    'table_id' => $booking['table']->id,
+                    'name' => $booking['user']->name,
+                    'phone' => $booking['user']->phone,
+                    'party_size' => $booking['size'],
+                    'notes' => $booking['notes'],
+                    'status' => $booking['status'],
+                ]
+            );
+        }
+
+        $onlineOrders = [
+            ['customer' => $customers[0], 'status' => 'preparing', 'payment' => 'paid', 'method' => 'bkash', 'items' => [0, 6]],
+            ['customer' => $customers[1], 'status' => 'pending', 'payment' => 'unpaid', 'method' => 'cash', 'items' => [2, 10, 20]],
+            ['customer' => $customers[2], 'status' => 'completed', 'payment' => 'paid', 'method' => 'card', 'items' => [1, 16]],
+        ];
+        foreach ($onlineOrders as $index => $online) {
+            $order = Order::create([
+                'order_number' => 'ORD-' . date('Ymd') . '-' . str_pad($index + 21, 4, '0', STR_PAD_LEFT),
+                'table_id' => $onlineTable->id,
+                'user_id' => $online['customer']->id,
+                'status' => $online['status'],
+                'payment_status' => $online['payment'],
+                'payment_method' => $online['method'],
+                'order_source' => 'customer',
+                'is_customer_approved' => $online['status'] !== 'pending',
+                'notes' => 'Please call on arrival',
+                'paid_amount' => $online['payment'] === 'paid' ? 0 : 0,
+                'paid_at' => $online['payment'] === 'paid' ? now()->subHours($index + 1) : null,
+            ]);
+
+            $total = 0;
+            foreach ($online['items'] as $menuIndex) {
+                $menuItem = $menus[$menuIndex];
+                $qty = 1;
+                $subtotal = $menuItem->price * $qty;
+                $total += $subtotal;
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'menu_id' => $menuItem->id,
+                    'quantity' => $qty,
+                    'unit_price' => $menuItem->price,
+                    'subtotal' => $subtotal,
+                ]);
+            }
+
+            $order->update([
+                'total_amount' => $total,
+                'paid_amount' => $online['payment'] === 'paid' ? $total : 0,
+            ]);
         }
 
         $this->call(MenuRecipeSeeder::class);

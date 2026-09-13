@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.14 sales reports --}}
 @extends('layouts.app')
 @section('title', 'Reports')
 @section('subtitle', 'Sales analytics and performance metrics')

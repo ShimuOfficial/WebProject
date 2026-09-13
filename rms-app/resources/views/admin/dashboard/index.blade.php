@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.14 staff dashboard --}}
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('subtitle', 'Floor, kitchen, stock and guest orders — live snapshot')

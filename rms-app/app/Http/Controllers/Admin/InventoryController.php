@@ -8,9 +8,7 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 
 /**
- * InventoryController
- *
- * Manage inventory items (CRUD) and low-stock filtering.
+ * DEFENSE: §5.13 inventory CRUD — chef is view-only via routes
  */
 class InventoryController extends Controller
 {

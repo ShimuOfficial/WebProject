@@ -11,6 +11,7 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array<int, string>
      */
+    // DEFENSE: §5.17 / Q18 — bank callback cannot send Laravel CSRF token
     protected $except = [
         'logout',
         '/sslcommerz/success',

@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+/** DEFENSE: §5.11 public booking — past slot + remainingSeats() */
 class ReservationController extends Controller
 {
     public function store(Request $request)

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/** DEFENSE: payment audit log (manual cash / SSLCommerz) */
 class PaymentTransaction extends Model
 {
     use HasFactory;

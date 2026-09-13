@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * DEFENSE: boot — share $site / cart badge / notification dot with Blade
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**

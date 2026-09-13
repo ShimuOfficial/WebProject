@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.1 public homepage --}}
 @extends('website.layouts.app')
 
 @section('content')

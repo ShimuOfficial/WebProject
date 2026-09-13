@@ -1,5 +1,12 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| DEFENSE: routes — every public URL lives in this file
+| Board: "Route koi?" → open routes/web.php
+|--------------------------------------------------------------------------
+*/
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Admin\AuthController;
@@ -22,12 +29,13 @@ use App\Http\Controllers\Website\ReservationController;
 use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
 use App\Http\Controllers\SslCommerzPaymentController;
 
+// DEFENSE: §5.1 public website (home, about, menu)
 Route::get('/', [HomeController::class, 'index'])->name('website.home');
 Route::get('/about', [HomeController::class, 'about'])->name('website.about');
 Route::get('/our-menu', [HomeController::class, 'menu'])->name('website.menu');
 
 
-// Auth Routes
+// DEFENSE: §5.11 public reservation + §5.2 staff login
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -35,7 +43,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Customer Auth Routes
+// DEFENSE: §5.3 customer register/login (guest only)
 Route::middleware('guest')->group(function () {
     Route::get('/customer/register', [CustomerAuthController::class, 'showRegister'])->name('customer.register');
     Route::post('/customer/register', [CustomerAuthController::class, 'register'])->name('customer.register.store');
@@ -45,6 +53,7 @@ Route::middleware('guest')->group(function () {
 
 // bKash callback route removed.
 
+// DEFENSE: §5.4 cart + §5.5 customer orders (must be logged-in customer)
 Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/customer/account', [CustomerAuthController::class, 'account'])->name('customer.account');
     Route::put('/customer/account', [CustomerAuthController::class, 'updateProfile'])->name('customer.account.update');
@@ -60,13 +69,14 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::post('/customer/orders/{order}/cancel', [CustomerOrderController::class, 'cancel'])->name('customer.orders.cancel');
 });
 
-// Protected Routes
+// DEFENSE: §4 staff panel — auth + staff roles (admin still passes RoleMiddleware)
 Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/data', [DashboardController::class, 'data'])->name('dashboard.data');
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    // DEFENSE: §5.6 dine-in orders / §5.7 approve customer / payments
     Route::resource('orders', OrderController::class)->except(['show'])->middleware('role:manager,cashier');
     Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel'])->middleware('role:manager,cashier')->name('orders.cancel');
     Route::patch('/orders/{order}/approve-customer', [OrderController::class, 'approveCustomerOrder'])
@@ -79,12 +89,12 @@ Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
     Route::get('/orders/{order}/receipt', [OrderController::class, 'receipt'])->middleware('role:manager,cashier')->name('orders.receipt');
     // Invoice PDF removed - May 14, 2026 (use receipt instead)
 
-    // Menu: Chef can view + toggle availability only
+    // DEFENSE: §5.12 menu — chef can view/toggle; manager does CRUD
     Route::get('/menu', [MenuController::class, 'index'])->middleware('role:manager,chef')->name('menu.index');
     Route::patch('/menu/{menu}/availability', [MenuController::class, 'toggleAvailability'])->middleware('role:chef,manager')->name('menu.availability');
     Route::resource('menu', MenuController::class)->except(['index'])->middleware('role:manager');
 
-    // Kitchen Display
+    // DEFENSE: §5.8 kitchen display — chef only
     Route::get('/kitchen', [KitchenController::class, 'index'])->middleware('role:chef')->name('kitchen.index');
     Route::patch('/kitchen/{order}', [KitchenController::class, 'updateStatus'])->middleware('role:chef')->name('kitchen.update');
 
@@ -93,7 +103,7 @@ Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
     Route::get('/reservations', [AdminReservationController::class, 'index'])->middleware('role:manager,admin')->name('reservations.index');
     Route::patch('/reservations/{reservation}', [AdminReservationController::class, 'update'])->middleware('role:manager,admin')->name('reservations.update');
 
-    // Inventory: Chef can view only
+    // DEFENSE: §5.10 tables + §5.11 admin reservations + §5.13 inventory
     Route::get('/inventory', [InventoryController::class, 'index'])->middleware('role:manager,admin,chef')->name('inventory.index');
 
     Route::middleware('role:manager,admin')->group(function () {
@@ -101,6 +111,7 @@ Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
         Route::resource('customers', CustomerController::class)->only(['index', 'destroy']);
         Route::patch('/customers/{customer}/status', [CustomerController::class, 'toggleStatus'])
             ->name('customers.status');
+        // DEFENSE: §5.14 reports — manager/admin
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
         Route::get('/reports/data', [ReportController::class, 'data'])->name('reports.data');
     });
@@ -108,7 +119,7 @@ Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::resource('staff', StaffController::class)->except(['create', 'show', 'edit']);
 
-        // Site Settings
+        // DEFENSE: §5.16 site branding + staff CRUD — admin only
         Route::get('/admin/site-settings', [SiteSettingsController::class, 'index'])->name('admin.site-settings.index');
         Route::put('/admin/site-settings', [SiteSettingsController::class, 'update'])->name('admin.site-settings.update');
     });
@@ -119,7 +130,7 @@ Route::middleware(['auth', 'role:manager,chef,cashier'])->group(function () {
 
 // bKash demo routes removed.
 
-    // SSLCommerz demo routes (sandbox/testing only)
+// DEFENSE: §5.17 SSLCommerz sandbox (CSRF excepted in VerifyCsrfToken)
     Route::get('/sslcommerz/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('sslcommerz.example1');
     Route::get('/sslcommerz/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('sslcommerz.example2');
     Route::post('/sslcommerz/pay', [SslCommerzPaymentController::class, 'index'])->name('sslcommerz.pay');

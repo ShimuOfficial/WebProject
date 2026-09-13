@@ -11,6 +11,10 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * DEFENSE: users table — staff + customers; role column + Spatie HasRoles
+ * Board: "syncLegacyRole ki?" → copies users.role into Spatie roles
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;

@@ -8,6 +8,7 @@ use App\Models\Table;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+/** DEFENSE: §5.11 staff confirm / cancel table bookings */
 class ReservationController extends Controller
 {
     public function index(Request $request)

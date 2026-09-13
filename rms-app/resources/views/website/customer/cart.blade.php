@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.4 customer cart + checkout form --}}
 @extends('website.layouts.app')
 
 @section('content')

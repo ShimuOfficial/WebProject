@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * KitchenController
- *
- * Kitchen KDS endpoints: list pending orders and mark status while handling inventory.
+ * DEFENSE: §5.8 KDS — list tickets; preparing/ready deducts stock ONCE
  */
 class KitchenController extends Controller
 {
@@ -46,6 +44,7 @@ class KitchenController extends Controller
 
         $newStatus = $request->status;
 
+        // DEFENSE: Q8/Q10 — deduct only if inventory_deducted_at is null (no double cut)
         if (in_array($newStatus, ['preparing', 'ready'], true) && $order->inventory_deducted_at === null) {
             try {
                 DB::transaction(function () use ($order, $newStatus) {

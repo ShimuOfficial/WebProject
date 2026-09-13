@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * CustomerAuthController
- *
- * Registration, login and account management for website customers.
+ * DEFENSE: §5.3 customer register / login / profile
+ * Board: "Phone validation?" → BD regex 01[3-9]
  */
 class CustomerAuthController extends Controller
 {

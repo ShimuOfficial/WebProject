@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\SiteSettings;
 
+/** DEFENSE: Blade helpers for logo / site name (reads SiteSettings) */
 class SiteHelper
 {
     /**

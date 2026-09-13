@@ -16,9 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 /**
- * CustomerOrderController
- *
- * Handle public customer order placement and listing of customer's orders.
+ * DEFENSE: §5.5 online checkout — inventory lock, ONLINE table, COD / SSLCommerz
  */
 class CustomerOrderController extends Controller
 {
@@ -76,6 +74,7 @@ class CustomerOrderController extends Controller
             }
         }
 
+        // DEFENSE: Q10 — transaction + lockForUpdate so two checkouts cannot oversell
         $result = DB::transaction(function () use ($items, $request) {
             $analysis = $this->analyzeInventoryForItems($items);
             if (!empty($analysis['missing_recipe'])) {

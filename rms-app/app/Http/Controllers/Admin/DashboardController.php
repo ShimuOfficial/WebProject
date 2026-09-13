@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * DashboardController
- *
- * Prepare data for admin dashboard and chef KDS endpoints.
+ * DEFENSE: §5.14 staff dashboard — chef sees queue counts; manager sees KPIs
  */
 class DashboardController extends Controller
 {

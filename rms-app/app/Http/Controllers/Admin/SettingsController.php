@@ -8,9 +8,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * SettingsController
- *
- * Manage the currently authenticated user's settings/profile.
+ * DEFENSE: logged-in staff profile (name / password) — not site branding
  */
 class SettingsController extends Controller
 {

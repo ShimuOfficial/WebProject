@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.1 public menu + add-to-cart --}}
 @extends('website.layouts.app')
 @section('content')
     <section class="menu-section" id="menu">

@@ -1,3 +1,4 @@
+// DEFENSE: §5.6 live totals + recipe/stock preview on create-order page
 const dataElement = document.getElementById('orderCreateData');
 
 if (!dataElement) {

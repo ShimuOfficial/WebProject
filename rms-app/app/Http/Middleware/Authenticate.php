@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 
+/**
+ * DEFENSE: §5.2 / §5.3 — guests on /customer/* go to customer login, others to /login
+ */
 class Authenticate extends Middleware
 {
     /**

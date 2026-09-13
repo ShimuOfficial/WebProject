@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DEFENSE: §5.9 orders — status, payment, customer source, cancel policy
+ * Board: "Customer kobe cancel korte pare?" → canBeCancelledByCustomer()
+ */
 class Order extends Model
 {
     use HasFactory;

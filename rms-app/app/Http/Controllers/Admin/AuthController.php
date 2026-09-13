@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * AuthController
- *
- * Admin/staff authentication (login, logout) endpoints.
+ * DEFENSE: §5.2 staff login — rejects role=customer, inactive users; regenerates session
  */
 class AuthController extends Controller
 {

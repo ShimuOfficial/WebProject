@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 /**
- * CustomerCartController
- *
- * Manage customer's shopping cart: add, update, remove, clear and JSON payloads.
+ * DEFENSE: §5.4 session cart — session('cart.items')[menu_id] = qty
+ * Board: "Cart table ache?" → No. Session only.
  */
 class CustomerCartController extends Controller
 {

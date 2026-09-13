@@ -1,3 +1,4 @@
+{{-- DEFENSE: staff panel shell (sidebar is role-based) --}}
 <!DOCTYPE html>
 <html lang="en">
 

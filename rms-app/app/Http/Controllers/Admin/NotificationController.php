@@ -10,9 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * NotificationController
- *
- * Aggregate various system notifications for admin/chef dashboards.
+ * DEFENSE: §5.15 pending orders, unpaid bills, low/out-of-stock alerts
  */
 class NotificationController extends Controller
 {

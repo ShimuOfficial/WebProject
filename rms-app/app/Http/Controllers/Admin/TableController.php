@@ -7,9 +7,7 @@ use App\Models\Table;
 use Illuminate\Http\Request;
 
 /**
- * TableController
- *
- * Manage dining tables: list, create, update, delete and status updates.
+ * DEFENSE: §5.10 dining tables CRUD + occupy/free status
  */
 class TableController extends Controller
 {

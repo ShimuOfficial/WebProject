@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/** DEFENSE: recipe row — quantity_per_dish × order qty = stock needed */
 class MenuIngredient extends Model
 {
     use HasFactory;

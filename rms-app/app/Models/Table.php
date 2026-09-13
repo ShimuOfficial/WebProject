@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/** DEFENSE: §5.10 dine-in tables; table_number ONLINE is delivery (not booked as a seat) */
 class Table extends Model
 {
     use HasFactory;

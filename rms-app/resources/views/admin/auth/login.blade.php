@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.2 staff login screen --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>

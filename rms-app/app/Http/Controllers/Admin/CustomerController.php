@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 
 /**
- * CustomerController
- *
- * Admin tools for managing customer accounts.
+ * DEFENSE: list / deactivate website customers
  */
 class CustomerController extends Controller
 {

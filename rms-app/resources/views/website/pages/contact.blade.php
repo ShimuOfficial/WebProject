@@ -1,3 +1,4 @@
+{{-- DEFENSE: §5.11 contact + reservation form --}}
 @extends('website.layouts.app')
 @section('content')
     <section class="location" id="contact">
