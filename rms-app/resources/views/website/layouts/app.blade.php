@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>{{ $site['name'] }} | {{ $site['tagline'] }}</title>
+    <meta name="description" content="{{ $site['tagline'] }}">
     <meta name="theme-color" content="{{ $site['primary_color'] }}">
+    <link rel="icon" type="image/svg+xml" href="{{ $site['favicon_url'] }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -25,6 +27,8 @@
             font-family: "Outfit", sans-serif;
             color: var(--text);
             background: #fff;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         img {
@@ -88,6 +92,17 @@
             padding: 12px 22px;
         }
 
+        .btn-checkout {
+            min-width: 0;
+            width: auto;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.2;
+            border-radius: 8px;
+            letter-spacing: .01em;
+        }
+
         .btn:disabled,
         .btn[disabled] {
             opacity: .55;
@@ -136,6 +151,15 @@
             font-weight: 800;
             color: #fff;
             background: linear-gradient(135deg, var(--brand2), var(--brand));
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #1a1510;
+            flex: 0 0 auto;
         }
 
         .hero {
@@ -830,7 +854,7 @@
             grid-template-columns: 1fr auto;
             gap: 12px;
             align-items: center;
-            margin-bottom: 20px
+            margin-bottom: 0;
         }
 
         .menu-search {
@@ -854,13 +878,20 @@
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 20px
+            margin-bottom: 0;
+        }
+
+        .menu-filters {
+            display: grid;
+            gap: 16px;
+            margin: 0 0 28px;
         }
 
         .category-dropdown {
             position: relative;
             width: 100%;
-            max-width: 360px
+            max-width: 360px;
+            margin: 0;
         }
 
         .category-dropdown-btn {
@@ -872,10 +903,10 @@
             position: absolute;
             top: calc(100% + 10px);
             left: 0;
-            z-index: 120;
+            z-index: 260;
             width: 100%;
-            max-height: 320px;
-            overflow-y: auto;
+            max-height: none;
+            overflow: hidden;
             display: grid;
             gap: 8px;
             padding: 12px;
@@ -927,26 +958,27 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: transform .2s, border-color .2s, box-shadow .2s;
-            animation: fadeUp .5s ease both
+            transition: border-color .2s, box-shadow .2s;
+            animation: fadeUp .45s ease both;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(16px)
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0)
             }
         }
 
         .dish:hover {
-            transform: translateY(-4px);
+            transform: none;
             border-color: var(--brand);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, .3)
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+            z-index: 2;
         }
 
         .dish-img {
@@ -1134,7 +1166,7 @@
             box-shadow: -18px 0 42px rgba(0, 0, 0, .45);
             transform: translateX(100%);
             transition: transform .24s ease;
-            overflow-y: auto;
+            overflow: hidden;
             padding: 18px
         }
 
@@ -1623,6 +1655,9 @@
         }
     </style>
     @include('website.partials.theme')
+    @include('website.partials.responsive')
+    @include('website.partials.stacking')
+    @stack('head')
 </head>
 
 <body>
@@ -1644,6 +1679,8 @@
             <p class="img-lightbox-caption" id="imgLightboxCaption"></p>
         </div>
     </div>
+    @stack('modals')
+    @stack('scripts')
 </body>
 
 </html>

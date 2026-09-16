@@ -43,6 +43,8 @@ yarn-error.log
 !public/images/
 !public/images/dishes/
 !public/images/dishes/**
+!screenshots/
+!screenshots/**
 
 # Temporary files
 tmp/

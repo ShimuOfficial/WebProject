@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Staff Console — {{ $site['name'] }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ $site['favicon_url'] }}">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -26,11 +27,12 @@
             color: #f6efe4;
             background:
                 linear-gradient(160deg, rgba(20,17,14,.92), rgba(196,92,38,.35)),
-                url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80') center/cover;
+                url('{{ $site['staff_image_url'] }}') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
         }
+        .pane img { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; margin-bottom: 18px; }
         .pane h1 {
             font-family: Fraunces, serif;
             font-size: clamp(40px, 5vw, 64px);
@@ -51,6 +53,8 @@
             border-radius: 24px;
             padding: 32px;
         }
+        .brand-row { display:flex; align-items:center; gap:10px; margin-bottom:16px; font-weight:800; }
+        .brand-row img { width:40px; height:40px; border-radius:10px; object-fit:cover; }
         h2 { font-family: Fraunces, serif; font-size: 28px; }
         .subtitle { color: #74685c; margin-bottom: 22px; }
         .btn-login {
@@ -66,21 +70,32 @@
             border-color: #e4d8c8;
             background: #fffdf8;
         }
+        html, body { max-width: 100%; overflow-x: hidden; scrollbar-width: none; }
+        * { scrollbar-width: none; }
         @media (max-width: 900px) {
             .wrap { grid-template-columns: 1fr; }
-            .pane { display: none; }
+            .pane { min-height: 220px; padding: 24px; }
+            .pane h1 { font-size: 32px; }
+            .form-side { padding: 16px; }
+            .card { padding: 20px; border-radius: 18px; }
+            h2 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <div class="wrap">
         <section class="pane">
+            <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
             <div class="section-label" style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#e8b86d">Staff access</div>
-            <h1>Kitchen, floor and stock in one console.</h1>
-            <p>Sign in to manage orders, reservations, inventory alerts and the kitchen display.</p>
+            <h1>{{ $site['content']['staff_login_title'] }}</h1>
+            <p>{{ $site['content']['staff_login_subtitle'] }}</p>
         </section>
         <section class="form-side">
             <div class="card">
+                <div class="brand-row">
+                    <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
+                    {{ $site['name'] }}
+                </div>
                 <h2>Console login</h2>
                 <p class="subtitle">{{ $site['name'] }} operations</p>
                 @if ($errors->any())

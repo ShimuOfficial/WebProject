@@ -2,7 +2,7 @@
     <div class="container">
         <div class="cta-inner">
             <div>
-                <h2>Book the room. Or send the kitchen an order.</h2>
+                <h2>{{ $site['content']['cta_title'] }}</h2>
                 <p>Open {{ $site['hours'][0]['time'] ?? '11AM - 11PM' }} &nbsp;&bull;&nbsp; {{ $site['phone'] }} &nbsp;&bull;&nbsp; {{ $site['address'] }}</p>
             </div>
             <div class="hero-actions" style="margin:0">

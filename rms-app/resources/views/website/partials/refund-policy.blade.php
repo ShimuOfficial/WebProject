@@ -1,9 +1,8 @@
 <div class="policy-box">
-    <h3>Cancellation &amp; Refund Policy</h3>
+    <h3>{{ $site['content']['refund_title'] ?? 'Cancellation & refund policy' }}</h3>
     <ul>
-        <li><strong>Pending:</strong> Cancel anytime. Cash on delivery orders are not charged.</li>
-        <li><strong>Approved:</strong> Cancel until cooking starts. Paid orders receive a full refund.</li>
-        <li><strong>Preparing / Ready:</strong> Cancellation is closed once the kitchen starts your order.</li>
-        <li><strong>Delivered:</strong> No refund after the order is delivered.</li>
+        @foreach ($site['content']['refund_items'] ?? [] as $item)
+            <li><strong>{{ $item['title'] }}:</strong> {{ $item['text'] }}</li>
+        @endforeach
     </ul>
 </div>

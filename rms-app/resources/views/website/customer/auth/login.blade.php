@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login | RestaurantOS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Customer Login | {{ $site['name'] }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ $site['favicon_url'] }}">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -21,11 +22,12 @@
             color: #f6efe4;
             background:
                 linear-gradient(160deg, rgba(20,17,14,.9), rgba(31,61,52,.45)),
-                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover;
+                url('{{ $site['login_image_url'] }}') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
         }
+        .intro img { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 18px; object-fit: cover; }
         .intro h2 {
             font-family: Fraunces, serif;
             font-size: clamp(40px, 6vw, 68px);
@@ -46,6 +48,8 @@
             border-radius: 24px;
             padding: 32px;
         }
+        .brand-row { display:flex; align-items:center; gap:10px; margin-bottom:18px; font-weight:800; }
+        .brand-row img { width:40px; height:40px; border-radius:10px; object-fit:cover; }
         h1 { margin: 0; font-family: Fraunces, serif; font-size: 32px; }
         p { color: #74685c; }
         label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
@@ -78,16 +82,28 @@
         .alert { margin-bottom: 12px; background: #fee2e2; border: 1px solid #fecaca; color: #991b1b; padding: 10px; border-radius: 12px; font-size: 13px; }
         .links { margin-top: 16px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
         a { color: #c45c26; text-decoration: none; font-weight: 700; }
-        @media (max-width: 820px) { body { grid-template-columns: 1fr; } .intro { display: none; } }
+        @media (max-width: 820px) {
+            body { grid-template-columns: 1fr; overflow-x: hidden; }
+            .intro { min-height: 220px; padding: 24px; }
+            .intro h2 { font-size: 32px; }
+            .panel { padding: 16px; }
+            .card { padding: 20px; border-radius: 18px; }
+            h1 { font-size: 26px; }
+        }
     </style>
 </head>
 <body>
     <section class="intro">
-        <h2>Your table, your order, one account.</h2>
-        <p>Sign in to order from the live menu, track kitchen status, and manage reservations.</p>
+        <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
+        <h2>{{ $site['content']['login_title'] }}</h2>
+        <p>{{ $site['content']['login_subtitle'] }}</p>
     </section>
     <section class="panel">
         <div class="card">
+            <div class="brand-row">
+                <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
+                {{ $site['name'] }}
+            </div>
             <h1>Guest login</h1>
             <p>Use your customer account to continue.</p>
             @if (session('success'))

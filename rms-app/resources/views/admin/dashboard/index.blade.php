@@ -6,7 +6,7 @@
 @section('content')
     <div class="ops-banner mb-4">
         <div>
-            <div class="text-xs muted" style="letter-spacing:.16em;text-transform:uppercase;font-weight:700">RestaurantOS</div>
+            <div class="text-xs muted" style="letter-spacing:.16em;text-transform:uppercase;font-weight:700">{{ $site['content']['dashboard_kicker'] ?? $site['name'] }}</div>
             <div class="fw-bold ops-banner-title">Command center</div>
             <div class="muted">{{ now()->format('l, d M Y') }} · Signed in as {{ auth()->user()->name }} ({{ auth()->user()->role }})</div>
         </div>

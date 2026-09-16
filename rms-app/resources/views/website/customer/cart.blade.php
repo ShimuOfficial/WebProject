@@ -31,7 +31,7 @@
                                 <div class="cart-item-title">
                                     <div class="cart-item-media">
                                         <img src="{{ $row['menu']->image_url }}" alt="{{ $row['menu']->name }}"
-                                            onerror="this.src='{{ asset('images/dishes/plain-rice.jpg') }}'">
+                                            onerror="this.src='{{ $site['dish_fallback_url'] ?? asset('images/dishes/plain-rice.jpg') }}'">
                                     </div>
                                     <div class="cart-item-info">
                                         <div class="cart-item-head">
@@ -96,7 +96,7 @@
                             <textarea name="notes" rows="3" placeholder="Any delivery or cooking notes?"></textarea>
                         </label>
                         <div class="order-cart-actions">
-                            <button class="btn btn-primary btn-rect" type="submit"
+                            <button class="btn btn-primary btn-checkout" type="submit"
                                 {{ $cartCount ? '' : 'disabled' }}>Checkout</button>
                             <button class="btn btn-outline btn-rect" type="submit" form="cartClearForm"
                                 {{ $cartCount ? '' : 'disabled' }}>Clear Cart</button>

@@ -17,7 +17,15 @@
     }
 
     html {
-        scroll-behavior: smooth;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
     }
 
     body {
@@ -25,6 +33,7 @@
         background:
             radial-gradient(1200px 400px at 10% -10%, rgba(196, 92, 38, .08), transparent 50%),
             var(--bg);
+        overflow-x: hidden;
         color: var(--text);
     }
 
@@ -68,6 +77,21 @@
         padding: 13px 22px;
     }
 
+    .btn-checkout {
+        min-width: 0;
+        width: auto;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.2;
+        border-radius: 8px;
+    }
+
+    .order-cart-actions .btn-checkout {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
     .nav {
         background: rgba(244, 239, 230, .86);
         border-bottom: 1px solid rgba(228, 216, 200, .9);
@@ -87,6 +111,48 @@
         font-size: 22px;
         font-weight: 700;
         letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #1a1510;
+        flex: 0 0 auto;
+    }
+
+    .footer-brand .brand-mark {
+        width: 36px;
+        height: 36px;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+        font-weight: 700;
+    }
+
+    .contact-photo {
+        margin: 8px 0 28px;
+        border-radius: 18px;
+        overflow: hidden;
+        aspect-ratio: 16 / 6;
+        background: var(--ink);
+    }
+
+    .contact-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    @media (max-width: 720px) {
+        .contact-photo {
+            aspect-ratio: 16 / 9;
+        }
     }
 
     .brand-badge {
@@ -307,7 +373,7 @@
         justify-content: space-between;
         align-items: end;
         gap: 16px;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
         flex-wrap: wrap;
     }
 
@@ -318,9 +384,10 @@
     }
 
     .dish:hover {
-        transform: translateY(-8px);
+        transform: none;
         box-shadow: 0 24px 44px rgba(20, 17, 14, .12);
         border-color: rgba(196, 92, 38, .35);
+        z-index: 2;
     }
 
     .dish-img {

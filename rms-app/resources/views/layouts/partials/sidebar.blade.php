@@ -1,20 +1,12 @@
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-        @if ($site['logo_url'])
-            <div style="display:flex;gap:10px;align-items:center">
-                <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}" style="height:40px;object-fit:contain">
-                <div>
-                    <div class="brand-text">{{ $site['name'] }}</div>
-                    <div class="brand-sub">Operations console</div>
-                </div>
-            </div>
-        @else
-            <div class="brand-icon"><i class="fas fa-utensils"></i></div>
+        <div style="display:flex;gap:10px;align-items:center">
+            <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}" class="brand-mark" style="width:40px;height:40px;object-fit:contain;border-radius:10px">
             <div>
                 <div class="brand-text">{{ $site['name'] }}</div>
                 <div class="brand-sub">Operations console</div>
             </div>
-        @endif
+        </div>
     </div>
 
     <nav class="sidebar-menu">

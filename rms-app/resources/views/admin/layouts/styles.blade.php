@@ -27,11 +27,35 @@
         box-sizing: border-box;
     }
 
+    html {
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
+
     body {
         font-family: 'Outfit', system-ui, sans-serif;
         background: var(--content-bg);
         color: var(--text-primary);
+        max-width: 100%;
         overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     /* Sidebar */
@@ -577,8 +601,9 @@
     }
 
     .stat-card:hover {
-        transform: translateY(-4px);
+        transform: none;
         box-shadow: 0 10px 25px rgb(0 0 0/.08);
+        z-index: 2;
     }
 
     .stat-icon {
@@ -748,8 +773,9 @@
     }
 
     .table-card:hover {
-        transform: translateY(-4px);
+        transform: none;
         box-shadow: 0 8px 24px rgb(0 0 0/.08);
+        z-index: 2;
     }
 
     .table-card.available {
@@ -920,15 +946,8 @@
 
     /* Animations */
     @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px)
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0)
-        }
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .fade-in {
@@ -956,7 +975,7 @@
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }
 
     .admin-toolbar-form {
@@ -1148,6 +1167,10 @@
             padding: 14px 16px;
         }
 
+        .table-responsive {
+            overflow: visible !important;
+        }
+
         .table thead th,
         .table tbody td {
             padding: 10px;
@@ -1188,6 +1211,112 @@
 
         .filter-control-auto {
             width: 100%;
+        }
+
+        .ops-banner {
+            padding: 14px;
+            gap: 10px;
+        }
+
+        .ops-banner-title {
+            font-size: 20px;
+        }
+
+        .page-title {
+            font-size: 16px;
+        }
+
+        .page-subtitle {
+            font-size: 12px;
+        }
+
+        .stat-card {
+            padding: 12px;
+        }
+
+        .kitchen-ticket {
+            margin-bottom: 0;
+        }
+    }
+
+    .table-responsive,
+    .table-responsive.text-nowrap {
+        overflow: visible !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .table,
+    .table th,
+    .table td,
+    .text-nowrap {
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .table th,
+    .table td {
+        font-size: 12px;
+        vertical-align: top;
+    }
+
+    .sidebar {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: none;
+    }
+
+    img,
+    canvas,
+    svg,
+    video {
+        max-width: 100%;
+    }
+
+    .card,
+    .stat-card,
+    .ops-banner,
+    .kitchen-ticket,
+    .content-area,
+    .main-content {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    @media (max-width: 991px) {
+        .main-content,
+        .content-area,
+        .top-navbar {
+            max-width: 100vw;
+        }
+
+        .btn, .form-control, .form-select {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .content-area {
+            padding: 10px 8px;
+        }
+
+        .top-navbar {
+            padding: 8px 10px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+        }
+
+        .card-body,
+        .card-header {
+            padding: 12px;
         }
     }
 </style>

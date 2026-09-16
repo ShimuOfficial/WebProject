@@ -70,7 +70,7 @@
                                                 onclick="toggleItem({{ $item->id }}, this)">
                                                 <div class="menu-select-card__media">
                                                     <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
-                                                        onerror="this.src='{{ asset('images/dishes/plain-rice.jpg') }}'">
+                                                        onerror="this.src='{{ $site['dish_fallback_url'] ?? asset('images/dishes/plain-rice.jpg') }}'">
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-start gap-2">
                                                     <div class="min-w-0">

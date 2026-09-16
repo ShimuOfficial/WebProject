@@ -59,42 +59,27 @@ class AppServiceProvider extends ServiceProvider
 
     private function composeSharedViewData(): void
     {
-        View::composer(['website.*', 'admin.auth.login', 'layouts.partials.sidebar', 'admin.partials.sidebar'], function ($view) {
+        View::composer(['website.*', 'admin.*', 'layouts.*'], function ($view) {
             $settings = SiteSettings::getInstance();
-            $siteName = $settings?->website_name ?: 'Restaurant Management System';
-            $tagline = $settings?->website_tagline ?: 'Fresh Food, Warm Service';
-            $phone = $settings?->phone_number ?: config('restaurant.phone', '+880 1700-000000');
-            $email = $settings?->email_address ?: config('restaurant.email', 'info@restaurantos.com');
-            $address = $settings?->address ?: config('restaurant.address', '12 Lakeview Road, Dhaka');
+            $site = SiteSettings::presentation($settings);
 
-            $view->with('site', [
-                'name' => $siteName,
-                'tagline' => $tagline,
-                'logo_url' => $settings?->logo ? asset('storage/' . ltrim($settings->logo, '/')) : null,
-                'primary_color' => $settings?->primary_color ?: '#FF6B35',
-                'secondary_color' => $settings?->secondary_color ?: '#004E89',
-                'accent_color' => $settings?->accent_color ?: '#F7C59F',
-                'phone' => $phone,
-                'phone_href' => preg_replace('/\s+/', '', $phone),
-                'email' => $email,
-                'address' => $address,
-                'hours' => config('restaurant.hours', []),
-            ]);
+            $view->with('site', $site);
 
             $heroSettings = $settings ?: (object) [
-                'hero_badge' => 'Open Today',
-                'hero_title' => 'Fresh Flavors,',
-                'hero_accent' => 'Fired Daily.',
-                'hero_subtitle' => 'Bold dishes crafted from seasonal ingredients. Order online, track your meal, and enjoy a warm dining experience every visit.',
+                'hero_badge' => config('restaurant.hero_badge'),
+                'hero_title' => config('restaurant.hero_title'),
+                'hero_accent' => config('restaurant.hero_accent'),
+                'hero_subtitle' => config('restaurant.hero_subtitle'),
                 'hero_background_image' => null,
             ];
 
             $view->with('heroSettings', $heroSettings);
             $view->with('aboutPage', [
-                'title' => data_get(config('restaurant.about'), 'title', 'Seasonal dishes, warm hospitality.'),
-                'text' => $settings?->about_us ?: data_get(config('restaurant.about'), 'text', 'We focus on fresh ingredients, calm service, and a menu that changes with the market.'),
-                'points' => data_get(config('restaurant.about'), 'points', []),
-                'image_url' => $settings?->about_image ? asset('storage/' . ltrim($settings->about_image, '/')) : null,
+                'title' => $settings?->about_title ?: data_get(config('restaurant.about'), 'title'),
+                'text' => $settings?->about_us ?: data_get(config('restaurant.about'), 'text'),
+                'points' => data_get($site['content'], 'about_points', data_get(config('restaurant.about'), 'points', [])),
+                'paragraphs' => data_get($site['content'], 'about_paragraphs', []),
+                'image_url' => $site['about_image_url'],
             ]);
 
             $view->with('websiteAssets', [

@@ -3,10 +3,17 @@
         <div class="footer-grid">
             <div>
                 <div class="footer-brand">
-                    <span class="brand-badge" style="width:36px;height:36px;font-size:14px">{{ strtoupper(substr($site['name'], 0, 1)) }}</span>
+                    <img class="brand-mark" src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
                     {{ $site['name'] }}
                 </div>
-                <p class="footer-desc">{{ $site['tagline'] }} Hospitality software for dining rooms that still cook from a real kitchen.</p>
+                <p class="footer-desc">{{ $site['content']['footer_blurb'] ?? $site['tagline'] }}</p>
+                @if (!empty($site['social']))
+                    <div class="footer-social">
+                        @foreach ($site['social'] as $link)
+                            <a href="{{ $link['url'] }}" target="_blank" rel="noopener">{{ $link['label'] }}</a>
+                        @endforeach
+                    </div>
+                @endif
             </div>
             <div class="footer-col">
                 <h4>Guest</h4>
@@ -30,8 +37,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; {{ date('Y') }} {{ $site['name'] }} &mdash; Restaurant operations system</span>
-            <span>Inventory, KDS, reservations, guest ordering</span>
+            <span>&copy; {{ date('Y') }} {{ $site['name'] }}</span>
+            <span>{{ $site['content']['footer_note'] ?? $site['tagline'] }}</span>
         </div>
     </div>
 </footer>

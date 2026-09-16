@@ -2,25 +2,16 @@
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
         @php
-            $logoUrl = \App\Helpers\SiteHelper::logoUrl();
-            $siteName = \App\Helpers\SiteHelper::siteName();
+            $logoUrl = $site['logo_url'] ?? \App\Helpers\SiteHelper::logoUrl();
+            $siteName = $site['name'] ?? \App\Helpers\SiteHelper::siteName();
         @endphp
-
-        @if ($logoUrl)
-            <div style="display:flex;gap:10px;align-items:center">
-                <img src="{{ $logoUrl }}" alt="{{ $siteName }}" style="height:40px;object-fit:contain">
-                <div>
-                    <div class="brand-text">{{ $siteName }}</div>
-                    <div class="brand-sub">Operations console</div>
-                </div>
-            </div>
-        @else
-            <div class="brand-icon"><i class="fas fa-utensils"></i></div>
+        <div style="display:flex;gap:10px;align-items:center">
+            <img src="{{ $logoUrl }}" alt="{{ $siteName }}" class="brand-mark" style="width:40px;height:40px;object-fit:contain;border-radius:10px">
             <div>
                 <div class="brand-text">{{ $siteName }}</div>
                 <div class="brand-sub">Operations console</div>
             </div>
-        @endif
+        </div>
     </div>
 
     <nav class="sidebar-menu">

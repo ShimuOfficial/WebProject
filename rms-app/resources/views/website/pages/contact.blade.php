@@ -3,9 +3,12 @@
 @section('content')
     <section class="location" id="contact">
         <div class="container">
-            <div class="section-label">Contact Us</div>
-            <h2 class="section-title">Location &amp; Hours</h2>
-            <p class="section-sub">Dine in, pickup, or order delivery. Reserve a table online — no phone call needed.</p>
+            <div class="section-label">{{ $site['content']['contact_label'] ?? 'Contact us' }}</div>
+            <h2 class="section-title">{{ $site['content']['contact_title'] ?? 'Location & hours' }}</h2>
+            <p class="section-sub">{{ $site['content']['contact_intro'] ?? 'Dine in, pick up, or order delivery. Reserve a table online — no phone call needed.' }}</p>
+            <div class="contact-photo">
+                <img src="{{ $site['contact_image_url'] }}" alt="{{ $site['name'] }} dining room">
+            </div>
             <div class="grid"
                 style="--grid-cols: 2; --grid-cols-md: 2; --grid-cols-sm: 1; --grid-gap: 24px; --grid-align: start;">
                 <div class="location-card">
@@ -34,9 +37,9 @@
             <div class="reserve-panel" id="reserve">
                 <div class="section-head" style="margin-bottom:18px">
                     <div>
-                        <div class="section-label">Book a table</div>
-                        <h2 class="section-title">Online Reservation</h2>
-                        <p class="section-sub">Choose a date, time slot, and party size. We will confirm your booking.</p>
+                        <div class="section-label">{{ $site['content']['reserve_label'] ?? 'Book a table' }}</div>
+                        <h2 class="section-title">{{ $site['content']['reserve_title'] ?? 'Online reservation' }}</h2>
+                        <p class="section-sub">{{ $site['content']['reserve_intro'] ?? 'Choose a date, time slot, and party size. We will confirm your booking.' }}</p>
                     </div>
                 </div>
 

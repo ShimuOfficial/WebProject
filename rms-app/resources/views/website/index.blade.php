@@ -7,29 +7,16 @@
 
     <section class="process">
         <div class="container">
-            <div class="section-label">Guest journey</div>
-            <h2 class="section-title">From seat to receipt</h2>
+            <div class="section-label">{{ $site['content']['process_label'] ?? 'Guest journey' }}</div>
+            <h2 class="section-title">{{ $site['content']['process_title'] ?? 'From menu to plate' }}</h2>
             <div class="process-grid">
-                <div class="process-step">
-                    <b>01</b>
-                    <h3>Browse</h3>
-                    <p class="section-sub">Open the live menu. Photos preview in a lightbox. Out-of-stock dishes are marked.</p>
-                </div>
-                <div class="process-step">
-                    <b>02</b>
-                    <h3>Order</h3>
-                    <p class="section-sub">Cart respects remaining servings. Checkout uses cash on delivery with a visible refund policy.</p>
-                </div>
-                <div class="process-step">
-                    <b>03</b>
-                    <h3>Kitchen</h3>
-                    <p class="section-sub">Staff approve, chefs cook, status steps turn green: Pending, Approved, Preparing, Ready, Delivered.</p>
-                </div>
-                <div class="process-step">
-                    <b>04</b>
-                    <h3>Dine or pickup</h3>
-                    <p class="section-sub">Reserve a table online, or track delivery. Cancel while the kitchen has not started.</p>
-                </div>
+                @foreach ($site['content']['process'] ?? [] as $step)
+                    <div class="process-step">
+                        <b>{{ $step['step'] }}</b>
+                        <h3>{{ $step['title'] }}</h3>
+                        <p class="section-sub">{{ $step['text'] }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -38,8 +25,8 @@
         <div class="container">
             <div class="home-menu-head">
                 <div>
-                    <div class="section-label">Tonight&rsquo;s board</div>
-                    <h2 class="section-title">Featured dishes</h2>
+                    <div class="section-label">{{ $site['content']['featured_label'] ?? 'Tonight’s board' }}</div>
+                    <h2 class="section-title">{{ $site['content']['featured_title'] ?? 'Featured dishes' }}</h2>
                 </div>
                 <a class="btn btn-outline" href="{{ route('website.menu') }}">Full menu</a>
             </div>
@@ -50,7 +37,7 @@
                             <button class="dish-img-trigger js-dish-preview" type="button"
                                 data-image="{{ $item->image_url }}" data-title="{{ $item->name }}">
                                 <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
-                                    onerror="this.src='{{ asset('images/dishes/plain-rice.jpg') }}'">
+                                    onerror="this.src='{{ $site['dish_fallback_url'] }}'">
                             </button>
                         </div>
                         <div class="dish-body">

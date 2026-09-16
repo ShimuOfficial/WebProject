@@ -1,7 +1,6 @@
 <section class="hero">
     <div class="container">
-        <div class="hero-grid"
-            @if ($heroSettings && $heroSettings->hero_background_image) style="background-image: url('{{ asset('storage/' . $heroSettings->hero_background_image) }}')" @endif>
+        <div class="hero-grid" style="background-image: url('{{ $site['hero_image_url'] }}')">
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="hero-dot"></span>
@@ -25,29 +24,23 @@
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <strong>4.8</strong>
-                        <span>Guest rating</span>
+                        <strong>{{ $site['guest_rating'] }}</strong>
+                        <span>{{ $site['content']['guest_stat_label'] ?? 'Guest rating' }}</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
                         <strong>KDS</strong>
-                        <span>Kitchen synced</span>
+                        <span>{{ $site['content']['kitchen_stat_label'] ?? 'Kitchen synced' }}</span>
                     </div>
                 </div>
             </div>
             <aside class="hero-panel" aria-label="Service highlights">
-                <div class="hero-tile">
-                    <strong>Live order tracking</strong>
-                    <span>Pending to delivered, with green progress states the kitchen actually uses.</span>
-                </div>
-                <div class="hero-tile">
-                    <strong>Stock-aware menu</strong>
-                    <span>Dishes hide themselves when inventory runs out. No ghost items.</span>
-                </div>
-                <div class="hero-tile">
-                    <strong>Table booking online</strong>
-                    <span>Pick date, slot and party size. Staff confirms from the CMS.</span>
-                </div>
+                @foreach ($site['content']['hero_tiles'] ?? [] as $tile)
+                    <div class="hero-tile">
+                        <strong>{{ $tile['title'] }}</strong>
+                        <span>{{ $tile['text'] }}</span>
+                    </div>
+                @endforeach
             </aside>
         </div>
     </div>

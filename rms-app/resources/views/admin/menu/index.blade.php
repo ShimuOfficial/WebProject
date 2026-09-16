@@ -30,7 +30,7 @@
                 <div class="card h-100 admin-media-card">
                     <div class="admin-media-card__image">
                         <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
-                            onerror="this.src='{{ asset('images/dishes/plain-rice.jpg') }}'">
+                            onerror="this.src='{{ $site['dish_fallback_url'] ?? asset('images/dishes/plain-rice.jpg') }}'">
                     </div>
                     <div class="card-body admin-media-card__body">
                         <div class="d-flex justify-content-between align-items-start gap-2 mb-2">

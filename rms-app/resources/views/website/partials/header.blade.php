@@ -1,11 +1,7 @@
 <nav class="nav">
     <div class="container nav-inner">
         <a class="brand" href="{{ route('website.home') }}">
-            @if ($site['logo_url'])
-                <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}" style="height:40px;object-fit:contain">
-            @else
-                <span class="brand-badge">{{ strtoupper(substr($site['name'], 0, 1)) }}</span>
-            @endif
+            <img class="brand-mark" src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
             {{ $site['name'] }}
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" id="siteNavToggle">Menu</button>

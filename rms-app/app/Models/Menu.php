@@ -51,7 +51,7 @@ class Menu extends Model
             return asset('storage/' . ltrim($this->image, '/'));
         }
 
-        return asset('images/dishes/plain-rice.jpg');
+        return asset(config('restaurant.images.dish_fallback', 'images/dishes/plain-rice.jpg'));
     }
 
     public function getAvailableServingsAttribute(): int

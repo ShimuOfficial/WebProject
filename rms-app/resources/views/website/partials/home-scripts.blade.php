@@ -91,6 +91,7 @@
         if (!lightbox) return;
         lightbox.hidden = true;
         lightbox.classList.remove('is-open');
+        document.body.classList.remove('lightbox-open');
     }
 
     document.querySelectorAll('.js-dish-preview').forEach(button => {
@@ -101,6 +102,7 @@
             if (lightboxCaption) lightboxCaption.textContent = button.dataset.title || '';
             lightbox.hidden = false;
             lightbox.classList.add('is-open');
+            document.body.classList.add('lightbox-open');
         });
     });
 

@@ -2,11 +2,25 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
 body {
     margin: 0;
     font-family: "Manrope", sans-serif;
     color: var(--text);
     background: #fff;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 img {
@@ -68,6 +82,16 @@ a {
     border-radius: 10px;
     min-width: 148px;
     padding: 12px 22px;
+}
+
+.btn-checkout {
+    min-width: 0;
+    width: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    border-radius: 8px;
 }
 
 .nav {

@@ -55,7 +55,16 @@ class CustomerCartController extends Controller
         $this->storeCartItems($request, $cart);
 
         if ($request->expectsJson()) {
-            return response()->json($this->buildCartPayload($request));
+            $payload = $this->buildCartPayload($request);
+            $payload['message'] = 'Added to cart.';
+            $payload['added'] = [
+                'menu_id' => $menuId,
+                'quantity' => $quantity,
+                'line_quantity' => $nextQty,
+                'remaining' => max(0, $menu->available_servings - $nextQty),
+            ];
+
+            return response()->json($payload);
         }
 
         return redirect()->back()->with('success', 'Added to cart.');
