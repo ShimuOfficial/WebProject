@@ -41,8 +41,11 @@ yarn-error.log
 *.jpg
 *.jpeg
 !public/images/
+!public/images/**
 !public/images/dishes/
 !public/images/dishes/**
+!public/images/brand/
+!public/images/brand/**
 !screenshots/
 !screenshots/**
 
