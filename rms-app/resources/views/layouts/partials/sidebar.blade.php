@@ -4,7 +4,7 @@
             <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}" class="brand-mark" style="width:40px;height:40px;object-fit:contain;border-radius:10px">
             <div>
                 <div class="brand-text">{{ $site['name'] }}</div>
-                <div class="brand-sub">Operations console</div>
+                    <div class="brand-sub">Admin panel</div>
             </div>
         </div>
     </div>

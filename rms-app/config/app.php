@@ -61,16 +61,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Timezone
+    | Application Timezone — DEFENSE Q16
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default timezone for your application, which
-    | will be used by the PHP date and date-time functions. We have gone
-    | ahead and set this to a sensible default for you out of the box.
+    | Asia/Dhaka (GMT+6). All Carbon/now() timestamps in Admin Panel
+    | (orders, reservations, reports) use this timezone.
+    | Override with APP_TIMEZONE in .env if needed.
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'Asia/Dhaka'),
 
     /*
     |--------------------------------------------------------------------------

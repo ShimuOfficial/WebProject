@@ -42,6 +42,7 @@ class HomeController extends Controller
         $upcomingReservations = collect();
         if (auth()->check() && auth()->user()->role === 'customer') {
             $upcomingReservations = Reservation::query()
+                ->with('table')
                 ->where('user_id', auth()->id())
                 ->whereIn('status', ['pending', 'confirmed'])
                 ->whereDate('reservation_date', '>=', now()->toDateString())

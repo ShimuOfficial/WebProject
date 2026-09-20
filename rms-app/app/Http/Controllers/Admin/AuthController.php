@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * DEFENSE: §5.2 staff login — rejects role=customer, inactive users; regenerates session
+ * DEFENSE Q5/Q18: Staff Admin Panel login.
+ * Rejects role=customer (they must use customer login).
+ * Rejects inactive users. Regenerates session after Auth::login.
  */
 class AuthController extends Controller
 {
@@ -19,7 +21,9 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
-    // Handle login submission and authenticate staff users.
+    /**
+     * DEFENSE Q5: Staff auth — customer role bounced with clear error message.
+     */
     public function login(Request $request)
     {
         $credentials = $request->validate([

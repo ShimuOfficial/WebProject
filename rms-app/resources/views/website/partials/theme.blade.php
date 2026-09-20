@@ -555,13 +555,17 @@
         }
 
         .reserve-form,
-        .status-stepper,
         .order-cart-controls {
             grid-template-columns: 1fr;
         }
 
+        .orders-track,
+        .status-stepper {
+            grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        }
+
         .status-step:not(:last-child)::after {
-            display: none;
+            display: block !important;
         }
 
         .cta-inner,

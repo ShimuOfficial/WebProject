@@ -16,11 +16,19 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 /**
- * DEFENSE: §5.5 online checkout — inventory lock, ONLINE table, COD / SSLCommerz
+ * DEFENSE Q7/Q13/Q14/Q15: Online checkout — inventory lock, ONLINE table, COD / SSLCommerz, cancel+refund
+ * Board: "Checkout logic koi?" → CustomerOrderController@store
+ * Board: "Cancel/refund koi?" → CustomerOrderController@cancel + Order::refundBreakdown()
  */
 class CustomerOrderController extends Controller
 {
-    // Store a new order placed by a customer (validates inventory and creates order).
+    /**
+     * DEFENSE Q7: Place online order.
+     * Flow: validate qty max 20 → re-check maxOrderableQuantity → require address →
+     * DB::transaction + Inventory::lockForUpdate → create Order on ONLINE table →
+     * clear session cart → COD redirect OR SSLCommerz forward view.
+     * Stock is NOT deducted here (see KitchenController).
+     */
     public function store(Request $request)
     {
         $items = $request->input('items', []);
@@ -40,11 +48,25 @@ class CustomerOrderController extends Controller
         validator($payload, [
             'items' => 'required|array|min:1',
             'items.*.menu_id' => 'required|exists:menus,id',
-            'items.*.quantity' => 'required|integer|min:1',
-            // Online payments: allow SSLCommerz when enabled locally.
+            'items.*.quantity' => 'required|integer|min:1|max:' . (int) config('restaurant.max_item_quantity', 20),
+            // Online payments: COD or SSLCommerz.
             'payment_method' => 'required|in:cash,sslcommerz',
             'notes' => 'nullable|string|max:1000',
         ])->validate();
+
+        // Cap each line to stock when remaining servings are below the hard max.
+        foreach ($items as $index => $item) {
+            $menu = Menu::with('menuIngredients.inventory')->find($item['menu_id']);
+            if (!$menu) {
+                continue;
+            }
+            $maxQty = $menu->maxOrderableQuantity();
+            if ((int) $item['quantity'] > $maxQty) {
+                throw ValidationException::withMessages([
+                    "items.{$index}.quantity" => $menu->name . ' is limited to ' . $maxQty . ' unit(s) right now (stock and per-order max).',
+                ]);
+            }
+        }
 
         $menuIds = collect($items)->pluck('menu_id')->filter()->unique()->values();
         if ($menuIds->isNotEmpty()) {
@@ -74,7 +96,7 @@ class CustomerOrderController extends Controller
             }
         }
 
-        // DEFENSE: Q10 — transaction + lockForUpdate so two checkouts cannot oversell
+        // DEFENSE Q7: transaction + lockForUpdate so two checkouts cannot oversell
         $result = DB::transaction(function () use ($items, $request) {
             $analysis = $this->analyzeInventoryForItems($items);
             if (!empty($analysis['missing_recipe'])) {
@@ -121,8 +143,9 @@ class CustomerOrderController extends Controller
                 ]);
             }
 
+            // DEFENSE Q15: Synthetic ONLINE table — not a physical dining seat.
             $onlineTable = Table::firstOrCreate(
-                ['table_number' => 'ONLINE'],
+                ['table_number' => config('restaurant.delivery.online_table_number', 'ONLINE')],
                 ['capacity' => 1, 'location' => 'Online', 'status' => 'available']
             );
 
@@ -167,7 +190,7 @@ class CustomerOrderController extends Controller
 
         $request->session()->forget('cart.items');
 
-        // If customer selected SSLCommerz, forward order details to the demo SSLCommerz flow.
+        // DEFENSE Q13: SSLCommerz sandbox forward (not deducted stock yet).
         if ($request->input('payment_method') === 'sslcommerz') {
             // Use order_number as tran_id to correlate.
             $order->refresh();
@@ -177,12 +200,15 @@ class CustomerOrderController extends Controller
             ]);
         }
 
-        // Default: cash on delivery
+        // DEFENSE Q13: Cash on delivery — unpaid until staff collects.
         return redirect()->route('customer.orders')
             ->with('success', 'Order placed for cash on delivery. Waiting for admin/manager approval.');
     }
 
-    // List orders placed by the authenticated customer.
+    /**
+     * DEFENSE Q12: Customer order list + horizontal tracker labels
+     * Steps: pending → approved → preparing → ready → completed (UI: Delivered)
+     */
     public function index()
     {
         $orders = Order::with(['items.menu'])
@@ -204,6 +230,11 @@ class CustomerOrderController extends Controller
         return view('website.customer.orders', compact('orders', 'trackSteps', 'trackLabels'));
     }
 
+    /**
+     * DEFENSE Q14: Customer cancel + tiered refund write-back.
+     * Guards: own order, order_source=customer, canBeCancelledByCustomer().
+     * Writes: cancelled status, cancellation_fee_percent, refund_amount, optional PaymentTransaction.
+     */
     public function cancel(Request $request, Order $order)
     {
         if ($order->user_id !== auth()->id() || ($order->order_source ?? 'staff') !== 'customer') {
@@ -215,18 +246,45 @@ class CustomerOrderController extends Controller
                 ->withErrors(['cancel' => $order->cancellationPolicyHint()]);
         }
 
-        $wasPaid = in_array($order->payment_status, ['paid', 'partial'], true);
+        $breakdown = $order->refundBreakdown();
 
         $order->update([
             'status' => 'cancelled',
-            'payment_status' => $wasPaid ? 'refunded' : ($order->payment_status ?? 'unpaid'),
+            'cancelled_at' => now(),
+            'cancellation_fee_percent' => $breakdown['was_paid'] ? $breakdown['fee_percent'] : 0,
+            'refund_amount' => $breakdown['was_paid'] ? $breakdown['refund_amount'] : 0,
+            'payment_status' => $breakdown['was_paid']
+                ? ($breakdown['refund_amount'] > 0 ? 'refunded' : 'paid')
+                : ($order->payment_status ?? 'unpaid'),
             'reserved_requirements' => null,
             'reserved_at' => null,
         ]);
 
-        $message = $wasPaid
-            ? 'Order cancelled. A full refund will be processed under the refund policy.'
-            : 'Order cancelled. No payment was collected.';
+        if ($breakdown['was_paid'] && $breakdown['refund_amount'] > 0) {
+            PaymentTransaction::create([
+                'order_id' => $order->id,
+                'transaction_id' => 'REFUND-' . $order->order_number . '-' . now()->format('His'),
+                'gateway' => $order->payment_method === 'sslcommerz' ? 'sslcommerz' : 'manual',
+                'amount' => -1 * $breakdown['refund_amount'],
+                'status' => 'refunded',
+                'payment_method' => $order->payment_method,
+                'gateway_response' => [
+                    'type' => 'cancellation_refund',
+                    'fee_percent' => $breakdown['fee_percent'],
+                    'refund_amount' => $breakdown['refund_amount'],
+                ],
+                'paid_at' => now(),
+            ]);
+        }
+
+        $message = !$breakdown['was_paid']
+            ? 'Order cancelled. No payment was collected.'
+            : (
+                $breakdown['fee_percent'] === 0
+                    ? 'Order cancelled. A full refund of ৳' . number_format($breakdown['refund_amount'], 2) . ' will be processed.'
+                    : 'Order cancelled. ৳' . number_format($breakdown['refund_amount'], 2)
+                        . ' will be refunded after a ' . $breakdown['fee_percent'] . '% cancellation fee.'
+            );
 
         return redirect()->route('customer.orders')->with('success', $message);
     }

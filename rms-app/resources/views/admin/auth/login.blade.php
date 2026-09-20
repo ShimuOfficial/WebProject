@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Staff Console — {{ $site['name'] }}</title>
+    <title>Admin Panel — {{ $site['name'] }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ $site['favicon_url'] }}">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,7 +86,7 @@
     <div class="wrap">
         <section class="pane">
             <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
-            <div class="section-label" style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#e8b86d">Staff access</div>
+            <div class="section-label" style="letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#e8b86d">Admin access</div>
             <h1>{{ $site['content']['staff_login_title'] }}</h1>
             <p>{{ $site['content']['staff_login_subtitle'] }}</p>
         </section>
@@ -117,11 +117,11 @@
                         <input type="checkbox" name="remember" class="form-check-input" id="remember">
                         <label class="form-check-label" for="remember">Remember me</label>
                     </div>
-                    <button type="submit" class="btn-login">Enter console</button>
+                    <button type="submit" class="btn-login">Enter admin panel</button>
                 </form>
                 <div class="d-flex justify-content-between mt-3" style="font-size:13px">
                     <a href="{{ route('website.home') }}" style="color:#c45c26">Back to website</a>
-                    <a href="{{ route('customer.login') }}" style="color:#74685c">Guest login</a>
+                    <a href="{{ route('customer.login') }}" style="color:#74685c">Login</a>
                 </div>
             </div>
         </section>

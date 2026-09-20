@@ -55,6 +55,8 @@ class OrderController extends Controller
             return [$menu->id => [
                 'name' => $menu->name,
                 'price' => (float) $menu->price,
+                'available_servings' => $menu->available_servings,
+                'max_qty' => $menu->maxOrderableQuantity(),
                 'ingredients' => $menu->menuIngredients->map(function ($ingredient) {
                     return [
                         'inventory_id' => $ingredient->inventory_id,
@@ -68,6 +70,7 @@ class OrderController extends Controller
         $orderCreateData = [
             'menuMeta' => $menuMeta,
             'inventoryMeta' => $inventoryMeta,
+            'maxItemQuantity' => (int) config('restaurant.max_item_quantity', 20),
             'serverTotal' => session('server_total') ?? null,
             'serverChange' => session('server_change') ?? null,
             'messages' => [
@@ -91,7 +94,7 @@ class OrderController extends Controller
             'table_id' => 'required|exists:tables,id',
             'items' => 'required|array|min:1',
             'items.*.menu_id' => 'required|exists:menus,id',
-            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.quantity' => 'required|integer|min:1|max:' . (int) config('restaurant.max_item_quantity', 20),
             'payment_method' => 'required|in:cash,bkash,rocket,card',
             'payment_reference' => 'nullable|string|max:100',
             'notes' => 'nullable|string',
@@ -110,6 +113,24 @@ class OrderController extends Controller
             'paid_amount.min' => $messages['paid_amount_min'],
             'paid_amount.required' => $messages['paid_amount_required'],
         ]);
+
+        foreach ($request->items as $index => $item) {
+            $menu = Menu::with('menuIngredients.inventory')->find($item['menu_id']);
+            if (!$menu) {
+                continue;
+            }
+            $maxQty = $menu->maxOrderableQuantity();
+            if ($maxQty < 1) {
+                return back()->withErrors([
+                    "items.{$index}.quantity" => $menu->name . ' is out of stock.',
+                ])->withInput();
+            }
+            if ((int) $item['quantity'] > $maxQty) {
+                return back()->withErrors([
+                    "items.{$index}.quantity" => $menu->name . ' is limited to ' . $maxQty . ' unit(s) (max 20 or remaining stock).',
+                ])->withInput();
+            }
+        }
 
         if (in_array($request->payment_method, ['bkash', 'rocket', 'card']) && blank($request->payment_reference)) {
             return back()->withErrors([

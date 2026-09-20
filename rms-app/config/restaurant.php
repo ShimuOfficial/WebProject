@@ -75,17 +75,18 @@ return [
         'login_subtitle' => 'Sign in to order from the live menu, track kitchen status, and manage reservations.',
         'register_title' => 'Create a guest account',
         'register_subtitle' => 'Register to place orders, follow kitchen status, and manage your table bookings.',
-        'staff_login_title' => 'Kitchen, floor and stock in one console.',
+        'staff_login_title' => 'Kitchen, floor and stock in one admin panel.',
         'staff_login_subtitle' => 'Sign in to manage orders, reservations, inventory alerts, and the kitchen display.',
         'dashboard_kicker' => 'Operations',
         'guest_stat_label' => 'Guest rating',
         'kitchen_stat_label' => 'Kitchen synced',
         'refund_title' => 'Cancellation & refund policy',
         'refund_items' => [
-            ['title' => 'Pending', 'text' => 'Cancel anytime. Cash on delivery orders are not charged.'],
-            ['title' => 'Approved', 'text' => 'Cancel until cooking starts. Paid orders receive a full refund.'],
-            ['title' => 'Preparing / Ready', 'text' => 'Cancellation is closed once the kitchen starts your order.'],
-            ['title' => 'Delivered', 'text' => 'No refund after the order is delivered.'],
+            ['title' => 'Pending (unpaid COD)', 'text' => 'Cancel anytime at no charge. Nothing is collected for cash on delivery.'],
+            ['title' => 'Pending (paid online)', 'text' => 'Full refund — 0% cancellation fee.'],
+            ['title' => 'Approved (paid online)', 'text' => '80% refund — 20% cancellation fee before the kitchen starts.'],
+            ['title' => 'Preparing', 'text' => 'Cancellation may still be blocked once inventory is deducted. If allowed for a paid order, 70% is refunded (30% fee).'],
+            ['title' => 'Ready / Delivered', 'text' => 'Cancellation and refunds are closed.'],
         ],
     ],
     'images' => [
@@ -96,5 +97,50 @@ return [
         'staff' => 'images/brand/staff.jpg',
         'contact' => 'images/brand/contact.jpg',
         'dish_fallback' => 'images/dishes/plain-rice.jpg',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | DEFENSE Q7: Max units of one menu item per order (hard ceiling).
+    | Actual allowed qty = min(max_item_quantity, Menu::available_servings).
+    | Used in: CustomerCartController, CustomerOrderController validation.
+    |--------------------------------------------------------------------------
+    */
+    'max_item_quantity' => 20,
+
+    /*
+    |--------------------------------------------------------------------------
+    | DEFENSE Q10/Q11: Reservation slot length (minutes).
+    | Overlap window = [time_slot, time_slot + duration). See Reservation model.
+    |--------------------------------------------------------------------------
+    */
+    'reservation_slot_minutes' => 60,
+
+    /*
+    |--------------------------------------------------------------------------
+    | DEFENSE Q15: Delivery is IN-HOUSE only — no Pathao/Foodpanda API.
+    | Online customer tickets attach to synthetic table_number = ONLINE.
+    |--------------------------------------------------------------------------
+    */
+    'delivery' => [
+        'provider' => 'in_house',
+        'provider_label' => 'Restaurant delivery (in-house)',
+        'courier_api' => null,
+        'online_table_number' => 'ONLINE',
+        'notes' => 'Orders with table_number ONLINE are customer delivery/pickup tickets. There is no third-party courier integration.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | DEFENSE Q14: Tiered cancellation fees (% of paid amount).
+    | Unpaid COD = always free. closed_statuses block cancel entirely.
+    | Math lives in Order::refundBreakdown().
+    |--------------------------------------------------------------------------
+    */
+    'refund' => [
+        'pending_fee_percent' => 0,
+        'approved_fee_percent' => 20,
+        'preparing_fee_percent' => 30,
+        'closed_statuses' => ['ready', 'served', 'completed'],
     ],
 ];

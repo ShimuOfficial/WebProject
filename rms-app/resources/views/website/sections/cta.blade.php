@@ -11,7 +11,7 @@
                     @if (auth()->user()->role === 'customer')
                         <a href="{{ route('customer.account') }}" class="btn btn-primary">My account</a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Open console</a>
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Open admin panel</a>
                     @endif
                 @else
                     <a href="{{ route('website.menu') }}" class="btn btn-primary">Start an order</a>

@@ -1,4 +1,4 @@
-{{-- DEFENSE: §5.1 public menu + Foodpanda-style dish preview modal --}}
+{{-- DEFENSE: §5.1 public menu + dish preview modal --}}
 @extends('website.layouts.app')
 
 @php

@@ -28,12 +28,14 @@ class CustomerCartController extends Controller
         ]);
     }
 
-    // Add an item to the cart (or increase quantity).
+    // DEFENSE Q6/Q7: Add to session cart with max = min(20, stock).
+    // Board: "Cart table ache?" → NO. See getCartItems()/storeCartItems() below (session only).
     public function add(Request $request)
     {
         $validated = $request->validate([
             'menu_id' => 'required|exists:menus,id',
-            'quantity' => 'nullable|integer|min:1',
+            // Soft max 20 from config; stock may lower it further via maxOrderableQuantity().
+            'quantity' => 'nullable|integer|min:1|max:' . (int) config('restaurant.max_item_quantity', 20),
         ]);
 
         $menuId = (int) $validated['menu_id'];
@@ -46,9 +48,15 @@ class CustomerCartController extends Controller
 
         $cart = $this->getCartItems($request);
         $nextQty = ($cart[$menuId] ?? 0) + $quantity;
+        // DEFENSE Q7: hard business cap
+        $maxQty = $menu->maxOrderableQuantity();
 
-        if ($nextQty > $menu->available_servings) {
-            return $this->stockError($request, 'Only ' . $menu->available_servings . ' serving(s) left for ' . $menu->name . '.');
+        if ($nextQty > $maxQty) {
+            $reason = $maxQty < (int) config('restaurant.max_item_quantity', 20)
+                ? 'Only ' . $maxQty . ' serving(s) left for ' . $menu->name . '.'
+                : 'You can order at most ' . config('restaurant.max_item_quantity', 20) . ' of ' . $menu->name . ' per order.';
+
+            return $this->stockError($request, $reason);
         }
 
         $cart[$menuId] = $nextQty;
@@ -74,14 +82,19 @@ class CustomerCartController extends Controller
     public function update(Request $request, Menu $menu)
     {
         $validated = $request->validate([
-            'quantity' => 'required|integer|min:1',
+            'quantity' => 'required|integer|min:1|max:' . (int) config('restaurant.max_item_quantity', 20),
         ]);
 
         $menu->loadMissing('menuIngredients.inventory');
         $nextQty = (int) $validated['quantity'];
+        $maxQty = $menu->maxOrderableQuantity();
 
-        if ($nextQty > $menu->available_servings) {
-            return $this->stockError($request, 'Only ' . $menu->available_servings . ' serving(s) left for ' . $menu->name . '.');
+        if ($nextQty > $maxQty) {
+            $reason = $maxQty < (int) config('restaurant.max_item_quantity', 20)
+                ? 'Only ' . $maxQty . ' serving(s) left for ' . $menu->name . '.'
+                : 'Maximum ' . config('restaurant.max_item_quantity', 20) . ' per item per order.';
+
+            return $this->stockError($request, $reason);
         }
 
         $cart = $this->getCartItems($request);
@@ -135,13 +148,17 @@ class CustomerCartController extends Controller
         ];
     }
 
-    // Return raw cart items array from session.
+    /**
+     * DEFENSE Q6: Session cart — NO `cart` database table.
+     * Key: session('cart.items') = [menu_id => quantity, ...]
+     * Lost when session expires / browser clears cookies.
+     */
     private function getCartItems(Request $request): array
     {
         return $request->session()->get('cart.items', []);
     }
 
-    // Persist cart items to session.
+    /** DEFENSE Q6: Persist cart to Laravel session store. */
     private function storeCartItems(Request $request, array $cartItems): void
     {
         $request->session()->put('cart.items', $cartItems);

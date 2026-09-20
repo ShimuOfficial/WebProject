@@ -202,12 +202,20 @@ if (!dataElement) {
         updateOrderSummary();
     };
 
+    const MAX_ITEM_QTY = Number(pageData.maxItemQuantity || 20);
+
     const changeQty = (id, delta) => {
         if (!state.selectedItems[id]) return;
 
         const input = document.getElementById('qty-' + id);
-        const newQty = Math.max(1, parseInt(input?.value || '1') + delta);
-        if (input) input.value = newQty;
+        const meta = menuMeta[id] || {};
+        const stockCap = Number(meta.available_servings ?? meta.max_qty ?? MAX_ITEM_QTY);
+        const hardCap = Math.max(1, Math.min(MAX_ITEM_QTY, stockCap || MAX_ITEM_QTY));
+        const newQty = Math.min(hardCap, Math.max(1, parseInt(input?.value || '1') + delta));
+        if (input) {
+            input.value = newQty;
+            input.max = hardCap;
+        }
         state.selectedItems[id].qty = newQty;
         syncSelectedCard(id);
         updateOrderSummary();

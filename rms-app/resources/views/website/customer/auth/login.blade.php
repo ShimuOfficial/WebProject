@@ -104,7 +104,7 @@
                 <img src="{{ $site['logo_url'] }}" alt="{{ $site['name'] }}">
                 {{ $site['name'] }}
             </div>
-            <h1>Guest login</h1>
+            <h1>Login</h1>
             <p>Use your customer account to continue.</p>
             @if (session('success'))
                 <div class="alert" style="background:#dcfce7;border-color:#bbf7d0;color:#166534">{{ session('success') }}</div>
@@ -126,7 +126,7 @@
             </form>
             <div class="links">
                 <a href="{{ route('customer.register') }}">Create account</a>
-                <a href="{{ route('login') }}">Staff console</a>
+                <a href="{{ route('login') }}">Admin panel</a>
                 <a href="{{ route('website.home') }}">Website</a>
             </div>
         </div>

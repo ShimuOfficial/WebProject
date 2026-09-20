@@ -88,7 +88,8 @@
                             <select name="payment_method" required>
                                 <option value="cash" {{ old('payment_method', 'cash') === 'cash' ? 'selected' : '' }}>
                                     Cash on Delivery</option>
-                                
+                                <option value="sslcommerz" {{ old('payment_method') === 'sslcommerz' ? 'selected' : '' }}>
+                                    Pay online (SSLCommerz)</option>
                             </select>
                         </label>
                         <label>

@@ -35,7 +35,15 @@ class KitchenController extends Controller
         return view('admin.kitchen.index', compact('orders'));
     }
 
-    // Update order status to preparing/ready while performing inventory checks/deductions.
+    /**
+     * DEFENSE Q8: Kitchen status change.
+     * When chef sets preparing/ready AND inventory_deducted_at is still null:
+     *   1) DB::transaction
+     *   2) lockForUpdate on inventory rows
+     *   3) subtract recipe × qty (respect other orders' reserved_requirements)
+     *   4) stamp inventory_deducted_at = now()  ← one-time gate
+     * Board: "Stock kobe kate?" → HERE, not at customer checkout.
+     */
     public function updateStatus(Request $request, Order $order)
     {
         $request->validate([
@@ -44,12 +52,13 @@ class KitchenController extends Controller
 
         $newStatus = $request->status;
 
-        // DEFENSE: Q8/Q10 — deduct only if inventory_deducted_at is null (no double cut)
+        // One-time deduct gate: null means stock not yet cut for this order.
         if (in_array($newStatus, ['preparing', 'ready'], true) && $order->inventory_deducted_at === null) {
             try {
                 DB::transaction(function () use ($order, $newStatus) {
                     $order->refresh();
 
+                    // Race: another request may have deducted while we waited for the lock.
                     if ($order->inventory_deducted_at !== null) {
                         $order->update(['status' => $newStatus]);
                         return;
@@ -57,6 +66,7 @@ class KitchenController extends Controller
 
                     $order->load(['items.menu.menuIngredients']);
 
+                    // Sum ingredient need across all order lines.
                     $requirements = [];
                     foreach ($order->items as $item) {
                         if (!$item->menu) {
@@ -77,6 +87,7 @@ class KitchenController extends Controller
 
                     $menusToDisable = [];
                     if (!empty($requirements)) {
+                        // DEFENSE Q7: row locks serialize concurrent kitchen tickets.
                         $inventories = Inventory::query()
                             ->whereIn('id', array_keys($requirements))
                             ->lockForUpdate()
@@ -84,7 +95,7 @@ class KitchenController extends Controller
                             ->keyBy('id');
 
                         $insufficient = [];
-                        // Consider existing reservations from other orders when computing availability
+                        // Hold-back stock reserved by OTHER not-yet-cooked orders.
                         $otherReserved = [];
                         $reservedOrders = \App\Models\Order::query()
                             ->whereNotNull('reserved_at')
@@ -122,7 +133,6 @@ class KitchenController extends Controller
                             $inv = $inventories[$inventoryId];
                             $inv->decrement('quantity', $required);
 
-                            // If this inventory reached zero or below, collect menus that use it to disable
                             if ($inv->quantity <= 0) {
                                 $menusUsing = $inv->menuIngredients()->pluck('menu_id')->unique()->all();
                                 $menusToDisable = array_merge($menusToDisable, $menusUsing);
@@ -130,6 +140,7 @@ class KitchenController extends Controller
                         }
                     }
 
+                    // Stamp once — future preparing/ready updates skip this whole block.
                     $order->update([
                         'status' => $newStatus,
                         'inventory_deducted_at' => now(),
@@ -137,9 +148,7 @@ class KitchenController extends Controller
 
                     if (!empty($menusToDisable)) {
                         $menusToDisable = array_unique($menusToDisable);
-                        // Mark the menus unavailable so new orders cannot be placed
                         \App\Models\Menu::whereIn('id', $menusToDisable)->update(['is_available' => false]);
-                        // Attach list to order instance for use after transaction
                         $order->setRelation('menus_disabled_ids', collect($menusToDisable));
                     }
                 });
@@ -147,7 +156,6 @@ class KitchenController extends Controller
                 return redirect()->route('kitchen.index')->withErrors(['inventory' => $e->getMessage()]);
             }
 
-            // If transaction set menus disabled, build a warning message
             $menusDisabledIds = $order->relationLoaded('menus_disabled_ids')
                 ? $order->getRelation('menus_disabled_ids')
                 : collect();

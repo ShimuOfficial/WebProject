@@ -1,4 +1,4 @@
-{{-- DEFENSE: §5.11 contact + reservation form --}}
+{{-- DEFENSE: §5.11 contact + reservation form with live table availability --}}
 @extends('website.layouts.app')
 @section('content')
     <section class="location" id="contact">
@@ -39,7 +39,7 @@
                     <div>
                         <div class="section-label">{{ $site['content']['reserve_label'] ?? 'Book a table' }}</div>
                         <h2 class="section-title">{{ $site['content']['reserve_title'] ?? 'Online reservation' }}</h2>
-                        <p class="section-sub">{{ $site['content']['reserve_intro'] ?? 'Choose a date, time slot, and party size. We will confirm your booking.' }}</p>
+                        <p class="section-sub">{{ $site['content']['reserve_intro'] ?? 'Pick date, time, and party size, then choose a free table by number and capacity.' }}</p>
                     </div>
                 </div>
 
@@ -55,14 +55,19 @@
                         <strong>Your upcoming bookings</strong>
                         @foreach ($upcomingReservations as $booking)
                             <div class="reserve-upcoming-row">
-                                <span>{{ $booking->display_slot }} · {{ $booking->party_size }} guests</span>
+                                <span>
+                                    {{ $booking->display_slot }} · {{ $booking->party_size }} guests
+                                    @if ($booking->table)
+                                        · Table {{ $booking->table->table_number }}
+                                    @endif
+                                </span>
                                 <span class="orders-badge {{ $booking->status }}">{{ ucfirst($booking->status) }}</span>
                             </div>
                         @endforeach
                     </div>
                 @endif
 
-                <form class="reserve-form" method="POST" action="{{ route('reservations.store') }}">
+                <form class="reserve-form" method="POST" action="{{ route('reservations.store') }}" id="reserveForm">
                     @csrf
                     <label>
                         <span class="label-title">Full name</span>
@@ -70,7 +75,10 @@
                     </label>
                     <label>
                         <span class="label-title">Phone</span>
-                        <input type="tel" name="phone" value="{{ old('phone', auth()->user()->phone ?? '') }}" required>
+                        <input type="tel" name="phone" id="reservePhone"
+                            inputmode="numeric" pattern="^(?:\+?88)?01[3-9]\d{8}$"
+                            placeholder="017XXXXXXXX" maxlength="14"
+                            value="{{ old('phone', auth()->user()->phone ?? '') }}" required>
                     </label>
                     <label>
                         <span class="label-title">Email</span>
@@ -78,12 +86,12 @@
                     </label>
                     <label>
                         <span class="label-title">Date</span>
-                        <input type="date" name="reservation_date" min="{{ now()->toDateString() }}"
+                        <input type="date" name="reservation_date" id="reserveDate" min="{{ now()->toDateString() }}"
                             value="{{ old('reservation_date', now()->toDateString()) }}" required>
                     </label>
                     <label>
-                        <span class="label-title">Time slot</span>
-                        <select name="time_slot" required>
+                        <span class="label-title">Time slot ({{ \App\Models\Reservation::slotDurationMinutes() }} min)</span>
+                        <select name="time_slot" id="reserveSlot" required>
                             @foreach ($reservationSlots as $slot)
                                 <option value="{{ $slot }}" {{ old('time_slot') === $slot ? 'selected' : '' }}>
                                     {{ $slot }}</option>
@@ -92,8 +100,15 @@
                     </label>
                     <label>
                         <span class="label-title">Party size</span>
-                        <input type="number" name="party_size" min="1" max="20"
+                        <input type="number" name="party_size" id="reserveParty" min="1" max="20"
                             value="{{ old('party_size', 2) }}" required>
+                    </label>
+                    <label class="reserve-table-field">
+                        <span class="label-title">Available table</span>
+                        <select name="table_id" id="reserveTable" required>
+                            <option value="">Select date, time &amp; party size first</option>
+                        </select>
+                        <small id="reserveTableHint" class="section-sub" style="display:block;margin-top:6px"></small>
                     </label>
                     <label class="reserve-notes">
                         <span class="label-title">Special requests</span>
@@ -107,3 +122,60 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    const dateEl = document.getElementById('reserveDate');
+    const slotEl = document.getElementById('reserveSlot');
+    const partyEl = document.getElementById('reserveParty');
+    const tableEl = document.getElementById('reserveTable');
+    const hintEl = document.getElementById('reserveTableHint');
+    const phoneEl = document.getElementById('reservePhone');
+    const availableUrl = @json(route('reservations.available'));
+    const oldTableId = @json(old('table_id'));
+
+    phoneEl?.addEventListener('input', () => {
+        phoneEl.value = phoneEl.value.replace(/[^\d+]/g, '');
+    });
+
+    async function refreshTables() {
+        if (!dateEl || !slotEl || !partyEl || !tableEl) return;
+        const params = new URLSearchParams({
+            reservation_date: dateEl.value,
+            time_slot: slotEl.value,
+            party_size: partyEl.value || '1',
+        });
+        tableEl.innerHTML = '<option value=\"\">Loading…</option>';
+        hintEl.textContent = '';
+        try {
+            const res = await fetch(availableUrl + '?' + params.toString(), {
+                headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const data = await res.json();
+            tableEl.innerHTML = '';
+            if (!data.tables || !data.tables.length) {
+                tableEl.innerHTML = '<option value=\"\">No tables available</option>';
+                hintEl.textContent = data.message || 'Try another time or party size.';
+                return;
+            }
+            tableEl.innerHTML = '<option value=\"\">Choose a table</option>';
+            data.tables.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.id;
+                opt.textContent = t.label;
+                if (String(oldTableId) === String(t.id)) opt.selected = true;
+                tableEl.appendChild(opt);
+            });
+            hintEl.textContent = data.tables.length + ' table(s) free for this slot.';
+        } catch (e) {
+            tableEl.innerHTML = '<option value=\"\">Could not load tables</option>';
+            hintEl.textContent = 'Please refresh and try again.';
+        }
+    }
+
+    [dateEl, slotEl, partyEl].forEach(el => el?.addEventListener('change', refreshTables));
+    refreshTables();
+})();
+</script>
+@endpush

@@ -77,14 +77,16 @@
 
                     <div class="orders-line" style="margin-top:10px">
                         <div class="orders-muted">
-                            @if (($order->order_source ?? 'staff') === 'customer' && $order->status !== 'completed')
-                                Payment: Cash on delivery
-                            @elseif (($order->payment_status ?? 'unpaid') === 'paid')
+                            @if (($order->payment_status ?? 'unpaid') === 'paid')
                                 Payment: {{ $order->payment_method_label }} paid
+                            @elseif (($order->payment_status ?? 'unpaid') === 'refunded')
+                                Payment: refunded ({{ $order->payment_method_label }})
                             @elseif (($order->payment_status ?? 'unpaid') === 'partial')
                                 Payment: {{ $order->payment_method_label }} partially paid
                             @elseif ($order->is_cash_on_delivery)
                                 Payment: Cash on delivery
+                            @elseif (($order->payment_method ?? '') === 'sslcommerz')
+                                Payment: SSLCommerz pending
                             @else
                                 Payment: {{ $order->payment_method_label }} pending
                             @endif

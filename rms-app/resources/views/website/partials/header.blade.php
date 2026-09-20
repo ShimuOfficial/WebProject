@@ -18,7 +18,7 @@
                         Cart <span class="cart-count" id="cartCount">{{ $cartSummary['count'] }}</span>
                     </a>
                 @else
-                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Staff Console</a>
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Admin Panel</a>
                 @endif
             @else
                 <a href="{{ route('customer.login') }}" class="btn btn-outline">Sign in</a>

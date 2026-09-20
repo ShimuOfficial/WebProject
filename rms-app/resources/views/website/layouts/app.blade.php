@@ -554,9 +554,12 @@
         .orders-track,
         .status-stepper {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
             gap: 0;
             margin-top: 18px;
+            align-items: start;
+            width: 100%;
+            overflow-x: auto;
         }
 
         .status-step {
@@ -566,18 +569,33 @@
             align-items: center;
             gap: 8px;
             text-align: center;
-            padding: 0 6px;
+            padding: 0 4px;
+            min-width: 0;
         }
 
         .status-step:not(:last-child)::after {
             content: "";
             position: absolute;
             top: 14px;
-            left: calc(50% + 16px);
-            right: calc(-50% + 16px);
+            left: calc(50% + 14px);
+            right: calc(-50% + 14px);
             height: 3px;
             background: #e5e7eb;
             border-radius: 99px;
+            display: block !important;
+        }
+
+        .status-step-label {
+            font-size: clamp(9px, 2.2vw, 11px);
+            font-weight: 800;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .status-step.is-complete:not(:last-child)::after,
@@ -610,14 +628,6 @@
             border-color: #16a34a;
             color: #166534;
             box-shadow: 0 0 0 4px rgba(22, 163, 74, .15);
-        }
-
-        .status-step-label {
-            font-size: 11px;
-            font-weight: 800;
-            color: #9ca3af;
-            text-transform: uppercase;
-            letter-spacing: .04em;
         }
 
         .status-step.is-complete .status-step-label,
@@ -1477,6 +1487,7 @@
         }
 
         .reserve-notes,
+        .reserve-table-field,
         .reserve-submit {
             grid-column: 1 / -1;
         }
@@ -1591,8 +1602,8 @@
             }
 
             .reserve-form,
-            .status-stepper {
-                grid-template-columns: 1fr 1fr;
+            .order-cart-controls {
+                grid-template-columns: 1fr
             }
 
             .grid {
@@ -1645,12 +1656,9 @@
                 padding: 28px 20px
             }
 
+            .orders-track,
             .status-stepper {
-                grid-template-columns: 1fr;
-            }
-
-            .status-step:not(:last-child)::after {
-                display: none;
+                grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
             }
         }
     </style>

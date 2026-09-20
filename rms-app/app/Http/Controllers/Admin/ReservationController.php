@@ -7,8 +7,10 @@ use App\Models\Reservation;
 use App\Models\Table;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 
-/** DEFENSE: §5.11 staff confirm / cancel table bookings */
+/** DEFENSE: §5.11 admin confirm / cancel table bookings with locking */
 class ReservationController extends Controller
 {
     public function index(Request $request)
@@ -22,7 +24,7 @@ class ReservationController extends Controller
         return view('admin.reservations.index', [
             'reservations' => $query->paginate(15)->withQueryString(),
             'tables' => Table::query()
-                ->where('table_number', '!=', 'ONLINE')
+                ->where('table_number', '!=', config('restaurant.delivery.online_table_number', 'ONLINE'))
                 ->orderBy('table_number')
                 ->get(),
         ]);
@@ -35,27 +37,63 @@ class ReservationController extends Controller
             'table_id' => 'nullable|exists:tables,id',
         ]);
 
-        if ($validated['status'] === 'confirmed') {
-            $remaining = Reservation::remainingSeats(
-                $reservation->reservation_date->toDateString(),
-                $reservation->time_slot,
-                $reservation->id
-            );
+        try {
+            DB::transaction(function () use ($validated, $reservation) {
+                $reservation = Reservation::query()->whereKey($reservation->id)->lockForUpdate()->firstOrFail();
 
-            if ($remaining < $reservation->party_size) {
-                return back()->withErrors([
-                    'status' => 'Not enough seats left to confirm this reservation.',
+                $tableId = $validated['table_id'] ?? $reservation->table_id;
+
+                if ($validated['status'] === 'confirmed') {
+                    if (!$tableId) {
+                        throw ValidationException::withMessages([
+                            'table_id' => 'Assign a table before confirming.',
+                        ]);
+                    }
+
+                    $table = Table::query()->whereKey($tableId)->lockForUpdate()->firstOrFail();
+
+                    if ((int) $table->capacity < (int) $reservation->party_size) {
+                        throw ValidationException::withMessages([
+                            'table_id' => "Table {$table->table_number} is too small for this party.",
+                        ]);
+                    }
+
+                    if (!Reservation::isTableFree(
+                        (int) $tableId,
+                        $reservation->reservation_date->toDateString(),
+                        $reservation->time_slot,
+                        $reservation->id
+                    )) {
+                        throw ValidationException::withMessages([
+                            'table_id' => 'That table already has an overlapping booking for this slot.',
+                        ]);
+                    }
+
+                    $table->update(['status' => 'reserved']);
+                }
+
+                $reservation->update([
+                    'status' => $validated['status'],
+                    'table_id' => $tableId,
                 ]);
-            }
-        }
 
-        $reservation->update([
-            'status' => $validated['status'],
-            'table_id' => $validated['table_id'] ?? $reservation->table_id,
-        ]);
+                if (in_array($validated['status'], ['cancelled', 'completed'], true) && $reservation->table_id) {
+                    $stillHeld = Reservation::query()
+                        ->where('table_id', $reservation->table_id)
+                        ->whereIn('status', ['pending', 'confirmed'])
+                        ->where('id', '!=', $reservation->id)
+                        ->whereDate('reservation_date', '>=', now()->toDateString())
+                        ->exists();
 
-        if (!empty($validated['table_id']) && $validated['status'] === 'confirmed') {
-            Table::where('id', $validated['table_id'])->update(['status' => 'reserved']);
+                    if (!$stillHeld) {
+                        Table::where('id', $reservation->table_id)
+                            ->where('status', 'reserved')
+                            ->update(['status' => 'available']);
+                    }
+                }
+            });
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->errors());
         }
 
         return back()->with('success', 'Reservation updated.');

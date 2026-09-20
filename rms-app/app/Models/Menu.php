@@ -34,6 +34,10 @@ class Menu extends Model
         return $query->where('category', $category);
     }
 
+    /**
+     * DEFENSE Q6: Image URL resolver — prefers public/images/dishes/{slug}.jpg
+     * Board: "Image kothay resolve hoy?" → getImageUrlAttribute()
+     */
     public function getImageUrlAttribute(): string
     {
         $filename = filled($this->image) ? basename($this->image) : \Illuminate\Support\Str::slug($this->name) . '.jpg';
@@ -54,6 +58,11 @@ class Menu extends Model
         return asset(config('restaurant.images.dish_fallback', 'images/dishes/plain-rice.jpg'));
     }
 
+    /**
+     * DEFENSE Q9: Recipe servings left.
+     * Formula: for each ingredient floor(stock / qty_per_dish), take MIN across recipe.
+     * Board: "Koto serving baki logic koi?" → this method
+     */
     public function getAvailableServingsAttribute(): int
     {
         $ingredients = $this->relationLoaded('menuIngredients')
@@ -80,9 +89,22 @@ class Menu extends Model
         return max(0, $max ?? 0);
     }
 
+    /** DEFENSE Q9: Dish can be sold only if flagged available AND servings > 0. */
     public function isOrderable(): bool
     {
         return $this->is_available && $this->available_servings > 0;
+    }
+
+    /**
+     * DEFENSE Q7: Max order qty = min(config max 20, available_servings).
+     * Board: "20 er beshi order hole?" → cart/checkout call this and reject.
+     */
+    public function maxOrderableQuantity(): int
+    {
+        $hardCap = (int) config('restaurant.max_item_quantity', 20);
+        $stock = $this->available_servings;
+
+        return max(0, min($hardCap, $stock));
     }
 
     public function estimateIngredients(float $dishCount = 1): array

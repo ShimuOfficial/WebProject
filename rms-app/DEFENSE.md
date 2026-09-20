@@ -418,6 +418,10 @@ JS: `resources/js/app.js`, `resources/js/admin/orders/create.js`
 
 ## 11. Twenty important defense questions
 
+> **Board e “kon file, koto line?”** — use the line-ranged Q1–Q20 in  
+> `SIMPLIFIED_WORKFLOW.md` (section *Twenty Important Defense Board Questions*).  
+> In code, search `DEFENSE Q` (e.g. `DEFENSE Q8`, `DEFENSE Q10`).
+
 **Q1. What is your project?**  
 A restaurant management system: public website + customer online orders + staff POS + kitchen display + recipe inventory + table reservations + reports.
 

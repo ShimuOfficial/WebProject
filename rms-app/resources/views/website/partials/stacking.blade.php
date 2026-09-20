@@ -103,6 +103,7 @@
     .status-stepper {
         position: relative;
         z-index: 0;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     }
 
     .status-step {
@@ -111,7 +112,9 @@
     }
 
     .status-step-label {
-        overflow-wrap: anywhere;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .about-media-title,

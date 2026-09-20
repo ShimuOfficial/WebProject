@@ -37,6 +37,7 @@ Route::get('/our-menu', [HomeController::class, 'menu'])->name('website.menu');
 
 // DEFENSE: §5.11 public reservation + §5.2 staff login
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/reservations/available', [ReservationController::class, 'available'])->name('reservations.available');
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

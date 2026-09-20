@@ -273,11 +273,11 @@
                             <input type="text" name="cta_title" class="form-control" value="{{ $content['cta_title'] ?? '' }}">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Guest login title</label>
+                            <label class="form-label">Login title</label>
                             <input type="text" name="login_title" class="form-control" value="{{ $content['login_title'] ?? '' }}">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Guest login subtitle</label>
+                            <label class="form-label">Login subtitle</label>
                             <input type="text" name="login_subtitle" class="form-control" value="{{ $content['login_subtitle'] ?? '' }}">
                         </div>
                         <div class="col-md-6">
