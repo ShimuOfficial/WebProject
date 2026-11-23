@@ -1,0 +1,114 @@
+<mxfile host="65bd71144e">
+    <diagram id="rms-swim-kitchen" name="Figure 4.2.3 Swimlane Kitchen (Corrected)">
+        <mxGraphModel dx="854" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="950" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;Figure 4.2.3: Swim-lane Diagram for Kitchen (Corrected)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="20" width="430" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="pool" value="Kitchen Order Management" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=30;horizontal=0;horizontalFlip=1;fillColor=none;strokeColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="60" width="860" height="1220" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_chef" value="Chef / Kitchen Staff" style="swimlane;html=1;startSize=30;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;fontStyle=1;fontColor=#000000;" parent="pool" vertex="1">
+                    <mxGeometry x="30" width="400" height="1220" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_init" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="187" y="45" width="26" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_login" value="Login to Chef Panel" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="95" y="95" width="210" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_open" value="Open KDS (Kitchen Display System)" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="85" y="210" width="230" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_view" value="View Kitchen Queue&lt;br&gt;(Active Orders on Screen)" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="95" y="380" width="210" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_accept" value="Accept Order" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="95" y="510" width="210" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_prep" value="Prepare Food According to Recipe" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="85" y="660" width="230" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_ready" value="Mark Order Ready" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontStyle=1;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="95" y="790" width="210" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="k_serve" value="Hand Over to Waiter / Delivery Staff" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_chef" vertex="1">
+                    <mxGeometry x="85" y="940" width="230" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_sys" value="RMS / System" style="swimlane;html=1;startSize=30;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;fontStyle=1;fontColor=#000000;" parent="pool" vertex="1">
+                    <mxGeometry x="430" y="0" width="430" height="1220" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_auth" value="Authenticate Chef Credentials&lt;br&gt;&amp;amp; Verify Kitchen Role" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="95" width="220" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_load" value="Fetch Pending &amp;amp; Preparing Orders&lt;br&gt;from 'orders' DB Table" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="270" width="220" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_upd_prep" value="Update Order Status in DB&lt;br&gt;to 'Preparing'" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="570" width="220" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_upd_ready" value="Update Order Status in DB&lt;br&gt;to 'Ready to Serve'" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="840" width="220" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_notify" value="Push Audio / Status Alert&lt;br&gt;to Floor Waiters &amp;amp; Customer App" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="920" width="220" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_deduct" value="Auto-Deduct Raw Ingredients&lt;br&gt;from 'inventories' Table" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="105" y="1005" width="220" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_end" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.5;" parent="lane_sys" vertex="1">
+                    <mxGeometry x="201" y="1100" width="28" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="k_init" target="k_login" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k_login" value="Login Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="k_login" target="s_auth" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_s_auth" value="Access Granted" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="s_auth" target="k_open" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="685" y="210"/>
+                            <mxPoint x="270" y="210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_kds_req" value="KDS Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="k_open" target="s_load" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_kds_res" value="Pending Orders List" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="s_load" target="k_view" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="k_view" target="k_accept" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k_acc" value="Accept Order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="k_accept" target="s_upd_prep" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_s_prep" value="Preparing Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="s_upd_prep" target="k_prep" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="k_prep" target="k_ready" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k_ready" value="Ready Update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="k_ready" target="s_upd_ready" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_s_not" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="s_upd_ready" target="s_notify" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_s_serve" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="s_notify" target="k_serve" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_k_done" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="k_serve" target="s_deduct" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_s_end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" parent="1" source="s_deduct" target="s_end" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

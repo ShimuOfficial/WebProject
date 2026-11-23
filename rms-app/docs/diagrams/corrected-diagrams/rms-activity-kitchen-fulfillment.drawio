@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="rms-act-kitchen" name="Activity Diagram - Kitchen Order Fulfillment">
+    <mxGraphModel dx="1200" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="950" pageHeight="1450" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Figure 4.1.3: Activity Diagram for Kitchen Order Fulfillment &amp;amp; Inventory Deduction Process&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="150" y="20" width="650" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Initial Node -->
+        <mxCell id="init" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="455" y="70" width="26" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- Action 1: Receive Order Ticket -->
+        <mxCell id="act_recv" value="KDS Receives New Order Ticket from System&lt;br&gt;&amp;amp; Plays Notification Alert" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="130" width="285" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Action 2: Review Queue -->
+        <mxCell id="act_review" value="Chef Reviews Ticket (Items, Notes &amp;amp; Quantities)" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="215" width="285" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision 1: Ingredients available? -->
+        <mxCell id="dec_ing" value="Ingredients&lt;br&gt;Available?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="405" y="295" width="125" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Branch: Low Stock Alert (Spacious right placement) -->
+        <mxCell id="act_alert_stock" value="Mark Item Out-of-Stock&lt;br&gt;&amp;amp; Notify Admin / Floor Staff" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="660" y="303.5" width="200" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Action 3: Accept Order -->
+        <mxCell id="act_accept" value="Chef Clicks 'Accept Order'&lt;br&gt;&amp;amp; Order Status Updated to 'Preparing'" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="400" width="285" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Action 4: Prepare Food -->
+        <mxCell id="act_prep" value="Kitchen Staff Prepares Dishes &amp;amp; Plates Food" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="485" width="285" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Action 5: Quality Check -->
+        <mxCell id="act_check" value="Quality &amp;amp; Recipe Compliance Check" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="565" width="285" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Action 6: Mark Ready -->
+        <mxCell id="act_ready" value="Chef Clicks 'Mark Ready'&lt;br&gt;(Status changes to 'Ready to Serve')" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="645" width="285" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Action 7: Notify Waiter / Delivery -->
+        <mxCell id="act_notify" value="System Dispatches Notification to Waiter / Delivery" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="730" width="285" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Action 8: Serve / Deliver -->
+        <mxCell id="act_served" value="Staff Delivers Food &amp;amp; Marks 'Served / Completed'" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="325" y="810" width="285" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Action 9: Auto Inventory Deduction -->
+        <mxCell id="act_deduct" value="System Auto-Deducts Raw Ingredients from Inventory&lt;br&gt;&amp;amp; Evaluates Low Stock Thresholds" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="315" y="890" width="305" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Final Node -->
+        <mxCell id="final_node" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="453" y="975" width="28" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- EDGES (Monochrome, with white background labels for zero overlap) -->
+        <mxCell id="e0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="init" target="act_recv" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_recv" target="act_review" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_review" target="dec_ing" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- [No] Stock alert -->
+        <mxCell id="e_no" value="[No]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" edge="1" source="dec_ing" target="act_alert_stock" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        
+        <!-- [Yes] Proceed -->
+        <mxCell id="e_yes" value="[Yes]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;fontSize=11;fontColor=#000000;labelBackgroundColor=#FFFFFF;" edge="1" source="dec_ing" target="act_accept" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_accept" target="act_prep" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_prep" target="act_check" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_check" target="act_ready" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_ready" target="act_notify" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_notify" target="act_served" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_served" target="act_deduct" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=1.2;" edge="1" source="act_deduct" target="final_node" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
